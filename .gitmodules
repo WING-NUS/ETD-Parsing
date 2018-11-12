@@ -1,0 +1,3 @@
+[submodule "Neural-ParsCit"]
+	path = Neural-ParsCit
+	url = https://github.com/WING-NUS/Neural-ParsCit.git
