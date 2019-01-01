@@ -14,8 +14,12 @@ name_splits = {u'first':'', u'middle':'', u'prelast':'', u'last':'', u'lineage':
 
 for f in field_keys:
     try:
-        a = unicode(bib_data.entries[bib_data.entries.keys()[0]].fields[f]).split()
-        bib_data.entries[bib_data.entries.keys()[0]].fields[f] = ' '.join([f + '_' + tokens for tokens in a])
+        # if f == u'year':
+        #     a = unicode(bib_data.entries[bib_data.entries.keys()[0]].fields[f]).split()
+        #     bib_data.entries[bib_data.entries.keys()[0]].fields[f] = a #' '.join([ tokens for tokens in a])
+        # else:
+            a = unicode(bib_data.entries[bib_data.entries.keys()[0]].fields[f]).split()
+            bib_data.entries[bib_data.entries.keys()[0]].fields[f] = ' '.join([f + '-' + tokens for tokens in a])
     except:
         pass
 
@@ -28,9 +32,9 @@ for p in person_keys:
             for name_types in name_splits:
                 if person.get_part(name_types) != []:
                     if fine_grained:
-                        name_splits[name_types] = p + '_' + name_types + '_' + person.get_part(name_types)[0]
+                        name_splits[name_types] = p + '-' + name_types + '-' + person.get_part(name_types)[0]
                     else:
-                        name_splits[name_types] = p  + '_' + person.get_part(name_types)[0]
+                        name_splits[name_types] = p  + '-' + person.get_part(name_types)[0]
 
             new_p = Person(first=name_splits[u'first'], middle=name_splits[u'middle'],
                            prelast=name_splits[u'prelast'], last=name_splits[u'last'],

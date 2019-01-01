@@ -8,6 +8,7 @@ temp_dir=$1
 out_dir=$1 
 
 csl_name_file=style_names
+style_files='./styles/'
 
 citeproc_tool_path='./'
 citeproc_binary='citeproc-java-tool-1.0.1/bin/citeproc-java'
@@ -56,11 +57,17 @@ then
   do
     BASE="${entry##*/}"
     rm $out_dir/${BASE%.*}.b2s
+    rm $out_dir/${BASE%.*}.sl
     let i=0
     while (( ${#myarray[@]} > i )); do
         if [ ${entry: -5} == ".lbib" ] && [ "${mask_array[i]}" -lt 20000 ]
           then
           $citeproc_tool_path$citeproc_binary bibliography -i $entry -s  "${myarray[i]}"  >>  $out_dir/${BASE%.*}.b2s
+          if [ "$?" == 0 ]
+             then
+             a=$(grep 'category field' "$style_files${myarray[i]}".csl | tr -d '\n')
+             echo "${myarray[i]}" $a>>  $out_dir/${BASE%.*}.sl
+          fi
 	fi
         ((i++))
     done
