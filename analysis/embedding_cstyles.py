@@ -19,7 +19,7 @@ def _preprocess(text):
 
 #'../DataParser/data/0/0000/1.b2s'
 #'../DataParser/data/0/0000/2.b2s'
-with open('../DataParser/data/0/0000/1.b2s', 'r') as styles, open('../DataParser/data/0/0000/1.sl', 'r') as lstyles:
+with open('../DataParser/data/0/0000/0.b2s', 'r') as styles, open('../DataParser/data/0/0000/0.sl', 'r') as lstyles:
     style_string = styles.readlines()
     lstyle_string = lstyles.readlines()
 
@@ -58,7 +58,7 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
 
     dist = 1 - cosine_similarity(tfidf_matrix) #precomputed is not there in TSNE
     mds = TSNE(random_state=1)
-    pos = mds.fit_transform(dist)  # shape (n_samples, n_components) either tfidf_matrix.todense() for raw or dist for processed
+    pos = mds.fit_transform(tfidf_matrix.todense())  # shape (n_samples, n_components) either tfidf_matrix.todense() for raw or dist for processed
 
     xs, ys = pos[:, 0], pos[:, 1]
 
@@ -92,6 +92,13 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
     # iterate through groups to layer the plot
     # note that I use the cluster_name and cluster_color dicts with the 'name' lookup to return the appropriate color/label
     for group, name, x, y in zip(labels, names, xs, ys):
+        # if group == 'generic-base':
+        #     ax.plot(x, y, marker='*', linestyle='', ms=12,
+        #             label=names, color=unique_color_list[group],
+        #             markersize=2,
+        #             mec='none')
+        #     ax.text(x, y, name, size=12)
+
         ax.plot(x, y, marker='.', linestyle='', ms=12,
                 label=names, color=unique_color_list[group],
                 markersize=2,
@@ -111,15 +118,12 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
             labelleft='off')
 
 
-        # if random.randint(1, 100) < 5:
-        #     ax.text(x, y, name, size=12)
-
-        name_map = {'acm-sigchi-proceedings-extended-abstract-format':'ACM', 'chicago-author-date':'Chicago',
+        name_map = {'acm-sigchi-proceedings-extended-abstract-format':'ACM', 'chicago-author-date':'Chicago-AD',
                     'apa':'APA', 'modern-language-association':'MLA',
-                    'turabian-fullnote-bibliography':'Turabian', 'ieee':'IEEE'}
-        if name in ['acm-sigchi-proceedings-extended-abstract-format', 'chicago-author-date',
-                    'apa', 'modern-language-association',
-                    'turabian-fullnote-bibliography', 'ieee']:
+                    'turabian-fullnote-bibliography':'Turabian', 'ieee':'IEEE', 'chicago-fullnote-bibliography':'Chicago-NB',
+                    'nature':'Nature', 'vancouver':'Vancouver', 'elsevier-harvard':'Elsevier-Harvard'}
+
+        if name in name_map.keys():
            ax.text(x, y, name_map[name], size=12)
 
 
