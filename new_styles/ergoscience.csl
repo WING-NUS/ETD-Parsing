@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>ergoscience</title>
+    <id>http://www.zotero.org/styles/ergoscience</id>
+    <link href="http://www.zotero.org/styles/ergoscience" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-vancouver" rel="template"/>
+    <link href="http://www.schulz-kirchner.de/ergotherapie/autorenhinweis_ergoscience.htm" rel="documentation"/>
+    
+    <author>
+      <name>Sebastian Spaeth</name>
+      <email>Sebastian@SSpaeth.de</email>
+      <uri>http://sspaeth.de</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1861-6348</issn>
+    <eissn>1861-6356</eissn>
+    <summary>A style for Schulz-Kirchner's "ergoscience"</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name initialize-with="" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="long" prefix=", " suffix="."/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <name initialize-with="" delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" prefix=" (" suffix=")." strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=" ">
+      <text variable="publisher-place" suffix=":&lt;/publisher-place&gt;" text-case="title" prefix="&lt;publisher-place&gt;"/>
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+      <text macro="year-date"/>
+    </group>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;[" suffix="]&lt;/citation-number&gt;"/>
+      <group delimiter=". ">
+        <text macro="author"/>
+        <choose>
+          <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <group delimiter=", ">
+              <text variable="title" text-case="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+              <text variable="volume" prefix="&lt;volume&gt;vol. " suffix="&lt;/volume&gt;"/>
+            </group>
+            <text macro="publisher"/>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text variable="title" text-case="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text term="in" text-case="sentence" suffix=":"/>
+            <text macro="editor"/>
+            <group delimiter=", ">
+              <text variable="container-title" form="short" text-case="title" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+              <text variable="volume" prefix="&lt;volume&gt;vol. " suffix="&lt;/volume&gt;"/>
+            </group>
+            <group delimiter="; ">
+              <text macro="publisher"/>
+              <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+            </group>
+          </else-if>
+          <else-if type="patent">
+            <text variable="title" text-case="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text variable="number" prefix="&lt;number&gt;" suffix="&lt;/number&gt;"/>
+            <text macro="year-date"/>
+          </else-if>
+          <else-if type="thesis">
+            <text variable="title" text-case="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text variable="genre" prefix="&lt;genre&gt;" suffix="&lt;/genre&gt;"/>
+            <group delimiter=", ">
+              <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+              <text macro="year-date"/>
+            </group>
+          </else-if>
+          <else>
+            <text variable="title" text-case="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <group delimiter=": ">
+              <group delimiter=" ">
+                <text variable="container-title" form="short" text-case="title" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+                <group delimiter="; ">
+                  <text macro="year-date"/>
+                  <group>
+                    <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+                    <text variable="issue" prefix="&lt;issue&gt;(" suffix=")&lt;/issue&gt;"/>
+                  </group>
+                </group>
+              </group>
+              <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

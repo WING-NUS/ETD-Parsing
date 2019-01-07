@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>Systematic Biology</title>
+    <id>http://www.zotero.org/styles/systematic-biology</id>
+    <link href="http://www.zotero.org/styles/systematic-biology" rel="self"/>
+    <link href="http://www.oxfordjournals.org/our_journals/sysbio/for_authors/" rel="documentation"/>
+    <author>
+      <name>Jorge Pinzon</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="zoology"/>
+    <category field="botany"/>
+    <category field="biology"/>
+    <issn>1063-5157</issn>
+    <eissn>1076-836X</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix=". &lt;/author&gt;" prefix="&lt;author&gt;">
+      <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with="."/>
+      <label prefix=", "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor&gt;In: " suffix=". &lt;/editor&gt;">
+      <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with="."/>
+      <label prefix=", "/>
+    </names>
+  </macro>
+  <macro name="year">
+    <date variable="issued" suffix=". ">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text variable="title" suffix=". &lt;/title&gt;" prefix="&lt;title&gt;"/>
+  </macro>
+  <citation disambiguate-add-year-suffix="true" collapse="year" et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key macro="year"/>
+      <key variable="issued" sort="ascending"/>
+    </sort>
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+          <name and="text" delimiter=" " name-as-sort-order="all" sort-separator=", " form="short"/>
+        </names>
+        <date variable="issued">
+          <date-part name="year" form="long" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="year" sort="ascending"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="author"/>
+      <text macro="year"/>
+      <text macro="title"/>
+      <choose>
+        <if type="book">
+          <text variable="publisher-place" suffix=": &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+        </if>
+        <else-if type="chapter">
+          <text macro="editor"/>
+          <text variable="container-title" suffix=". &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+          <text variable="publisher-place" suffix=": &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <text variable="publisher" suffix=".&lt;/publisher&gt;" prefix="&lt;publisher&gt;"/>
+          <text variable="page" prefix="&lt;page&gt; p. " suffix="&lt;/page&gt;"/>
+        </else-if>
+        <else-if type="webpage">
+          <text variable="URL" prefix="&lt;URL&gt;Available from " suffix="&lt;/URL&gt;"/>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text variable="container-title" suffix=".&lt;/container-title&gt;" form="short" prefix="&lt;container-title&gt;"/>
+            <text variable="volume" prefix="&lt;volume&gt; " suffix="&lt;/volume&gt;"/>
+            <text variable="page" prefix="&lt;page&gt;:" suffix="&lt;/page&gt;"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US" demote-non-dropping-particle="sort-only" page-range-format="expanded">
+  <info>
+    <title>High Altitude Medicine &amp; Biology</title>
+    <id>http://www.zotero.org/styles/high-altitude-medicine-and-biology</id>
+    <link href="http://www.zotero.org/styles/high-altitude-medicine-and-biology" rel="self"/>
+    <link href="http://www.zotero.org/styles/cell" rel="template"/>
+    <link href="http://www.liebertpub.com/forauthors/high-altitude-medicine-and-biology/65/" rel="documentation"/>
+    <author>
+      <email>obrienpat86@gmail.com</email>
+      <name>Patrick O'Brien</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>1527-0297</issn>
+    <eissn>1557-8682</eissn>
+    <summary>Style for High Altitude Medicine &amp; Biology based on the Cell journal style.</summary>
+    <updated>2017-02-06T23:31:47+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" and="text"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+        <choose>
+          <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <text variable="title" form="short" font-style="italic" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+          </if>
+          <else>
+            <text variable="title" form="short" quotes="false" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-count">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="count"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name and="text" initialize-with="" name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place&gt;" suffix="&lt;/publisher-place&gt;"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <name and="text" initialize-with=""/>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year">
+    <sort>
+      <key macro="author-short" names-min="1" names-use-first="1"/>
+      <key macro="author-count" names-min="3" names-use-first="3"/>
+      <key macro="author" names-min="3" names-use-first="1"/>
+      <key macro="issued"/>
+      <key variable="title"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography sort-separator=" ">
+    <sort>
+      <key macro="author-short" names-min="1" names-use-first="1"/>
+      <key macro="author-count" names-min="3" names-use-first="3"/>
+      <key macro="author" names-min="3" names-use-first="1"/>
+      <key macro="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author"/>
+        <text macro="issued" prefix="(" suffix=")."/>
+        <choose>
+          <if type="article article-magazine article-newspaper article-journal review" match="any">
+            <text variable="title" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text variable="container-title" form="short" text-case="title" strip-periods="true" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+            <group delimiter=":">
+              <text variable="volume" font-style="normal" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+              <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+            </group>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text variable="title" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text term="in" text-case="capitalize-first" suffix=":"/>
+            <text variable="container-title" text-case="title" suffix=".&lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text macro="editor"/>
+            <text macro="publisher" suffix=","/>
+            <label variable="page" form="short"/>
+            <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+          </else-if>
+          <else-if type="thesis">
+            <text variable="title" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text variable="genre" suffix=".&lt;/genre&gt;" prefix="&lt;genre&gt;"/>
+            <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+          </else-if>
+          <else-if type="webpage post-weblog" match="any">
+            <text variable="title" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text variable="container-title" suffix=".&lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <date variable="issued">
+              <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+            </date>
+            <choose>
+              <if variable="URL">
+                <text term="available at" text-case="capitalize-first"/>
+                <text variable="URL" prefix="&lt;URL&gt;" suffix="&lt;/URL&gt;"/>
+                <group prefix="(" suffix=")" delimiter=" ">
+                  <text term="accessed" text-case="lowercase"/>
+                  <date variable="accessed" form="text" prefix="&lt;accessed&gt;" suffix="&lt;/accessed&gt;"/>
+                </group>
+              </if>
+            </choose>
+          </else-if>
+          <else>
+            <text variable="title" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="publisher"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

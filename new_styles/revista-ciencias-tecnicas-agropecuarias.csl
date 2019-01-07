@@ -1,0 +1,564 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="es-ES">
+  <info>
+    <title>Revista Ciencias Técnicas Agropecuarias (Spanish)</title>
+    <title-short>rcta</title-short>
+    <id>http://www.zotero.org/styles/revista-ciencias-tecnicas-agropecuarias</id>
+    <link href="http://www.zotero.org/styles/revista-ciencias-tecnicas-agropecuarias" rel="self"/>
+    <link href="http://www.zotero.org/styles/iso690-author-date-es" rel="template"/>
+    <link href="http://www.rcta.unah.edu.cu/public/journals/1/Normas_asiento_bibliogr%C3%A1fico.pdf" rel="documentation"/>
+    <author>
+      <name>Rafael Cervantes Beyra</name>
+      <email>cervantes@unah.edu.cu</email>
+    </author>
+    <author>
+      <name>Daniel Ponce de León</name>
+      <email>dponcelima@gmail.com</email>
+    </author>
+    <author>
+      <name>Carlos Balmaseda Espinosa</name>
+      <email>balmaseda.espinosa@gmail.com</email>
+    </author>
+    <author>
+      <name>Daybelis Fernández Valdés</name>
+      <email>dfernandez@unah.edu.cu</email>
+    </author>
+    <author>
+      <name>Iván Castro Lizazo</name>
+      <email>ivanc@unah.edu.cu</email>
+    </author>
+    <author>
+      <name>Dayvis Fernández Valdés</name>
+      <email>dayvis86@hotmail.com</email>
+    </author>
+    <author>
+      <name>Arturo Ocampo Ramírez</name>
+      <email>ingaor@hotmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="engineering"/>
+    <issn>1010-2760</issn>
+    <eissn>2071-0054</eissn>
+    <summary>Style based on ISO 690:2010(F), V1, derived from Giraud version.</summary>
+    <updated>2014-04-07T05:55:13+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="anonymous">Anon.</term>
+      <term name="no date">[s.f]</term>
+      <term name="in">en</term>
+      <term name="online">en linea</term>
+      <term name="retrieved">disponible </term>
+      <term name="from">en</term>
+      <term name="editor">edit.</term>
+      <term name="accessed">consulta:</term>
+      <term name="translator">trad.</term>
+      <term name="page" form="short">
+        <single>p.</single>
+        <multiple>pp.</multiple>
+      </term>
+      <term name="ordinal">a.</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter="; " delimiter-precedes-last="never" suffix=": ">
+        <name-part name="family" text-case="uppercase"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <label prefix=" " form="long" suffix=". "/>
+      <name and="text">
+        <name-part name="family"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="translator">
+    <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;">
+      <label prefix=" " form="long" suffix=". "/>
+      <name and="text">
+        <name-part name="family"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="interviewer">
+    <names variable="interviewer" prefix="&lt;interviewer&gt;" suffix="&lt;/interviewer&gt;">
+      <label prefix=" " form="long" suffix=". "/>
+      <name and="text">
+        <name-part name="family"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="responsability">
+    <choose>
+      <if variable="author editor translator" match="any">
+        <choose>
+          <if variable="author">
+            <text macro="author"/>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="author-citation">
+    <choose>
+      <if variable="author editor translator" match="any">
+        <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+          <name and="text" form="short"/>
+          <et-al font-style="italic"/>
+          <substitute>
+            <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+            <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+          </substitute>
+        </names>
+      </if>
+      <else>
+        <text term="anonymous" text-case="uppercase"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-author">
+    <names variable="container-author" prefix="&lt;container-author&gt;" suffix="&lt;/container-author&gt;">
+      <label form="long"/>
+      <name>
+        <name-part name="family"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="collection-editor">
+    <names variable="collection-editor" prefix="&lt;collection-editor&gt;" suffix="&lt;/collection-editor&gt;">
+      <label form="long"/>
+      <name>
+        <name-part name="family"/>
+        <name-part name="given"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year" form="long" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+  </macro>
+  <macro name="medium">
+    <text variable="medium" prefix="&lt;medium&gt; [" suffix="]&lt;/medium&gt;"/>
+  </macro>
+  <macro name="genre">
+    <text variable="genre" prefix="&lt;genre&gt;" suffix="&lt;/genre&gt;"/>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="day" suffix=" de &lt;/day&gt;" prefix="&lt;day&gt;"/>
+          <date-part name="month" suffix=" de &lt;/month&gt;" prefix="&lt;month&gt;"/>
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="date-responsability">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="day" suffix=" de &lt;/day&gt;" font-style="italic" prefix="&lt;day&gt;"/>
+          <date-part name="month" suffix=" de &lt;/month&gt;" font-style="italic" prefix="&lt;month&gt;"/>
+          <date-part name="year" font-style="italic" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <number variable="edition" form="ordinal" suffix=" &lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+    <text term="edition" form="short" suffix=" "/>
+  </macro>
+  <macro name="publisher-place">
+    <text variable="publisher-place" prefix="&lt;publisher-place&gt;" suffix="&lt;/publisher-place&gt;"/>
+  </macro>
+  <macro name="issue">
+    <text variable="issue" prefix="&lt;issue&gt;" suffix="&lt;/issue&gt;"/>
+  </macro>
+  <macro name="volume">
+    <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+  </macro>
+  <macro name="archive">
+    <text variable="archive" prefix="&lt;archive&gt;" suffix="&lt;/archive&gt;"/>
+  </macro>
+  <macro name="archive_location">
+    <text variable="archive_location" prefix="&lt;archive_location&gt;" suffix="&lt;/archive_location&gt;"/>
+  </macro>
+  <macro name="accessed">
+    <choose>
+      <if variable="URL">
+        <group font-style="italic">
+          <text term="accessed" text-case="capitalize-first" prefix=" ["/>
+          <date variable="accessed">
+            <date-part name="day" prefix="&lt;day&gt; " suffix=" de&lt;/day&gt;"/>
+            <date-part name="month" prefix="&lt;month&gt; " suffix=" de&lt;/month&gt;"/>
+            <date-part name="year" prefix="&lt;year&gt; " suffix="]&lt;/year&gt;"/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="collection">
+    <group delimiter=", ">
+      <text variable="collection-title" prefix="&lt;collection-title&gt;" suffix="&lt;/collection-title&gt;"/>
+      <text variable="collection-number" prefix="&lt;collection-number&gt;" suffix="&lt;/collection-number&gt;"/>
+    </group>
+  </macro>
+  <macro name="page">
+    <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+  </macro>
+  <macro name="number-of-pages">
+    <text variable="number-of-pages" prefix="&lt;number-of-pages&gt;" suffix="&lt;/number-of-pages&gt;"/>
+  </macro>
+  <macro name="isbn">
+    <text variable="ISBN" prefix="&lt;ISBN&gt;ISBN-" suffix="&lt;/ISBN&gt;"/>
+  </macro>
+  <macro name="issn">
+    <choose>
+      <if type="article-magazine" match="any">
+        <text variable="ISSN" prefix="&lt;ISSN&gt;ISBN-" suffix="&lt;/ISSN&gt;"/>
+      </if>
+      <else-if type="article-journal article-newspaper" match="any">
+        <text variable="ISSN" prefix="&lt;ISSN&gt;ISSN-" suffix="&lt;/ISSN&gt;"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="doi">
+    <text variable="DOI" prefix="&lt;DOI&gt;DOI-" suffix="&lt;/DOI&gt;"/>
+  </macro>
+  <macro name="url">
+    <choose>
+      <if variable="URL">
+        <group font-style="italic">
+          <text term="retrieved" text-case="capitalize-first"/>
+          <text term="from" suffix=": "/>
+          <text variable="URL" prefix="&lt;URL&gt;" suffix="&lt;/URL&gt;"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="online">
+    <choose>
+      <if variable="DOI URL" match="any">
+        <text value="[en línea] "/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="note">
+    <text variable="note" prefix="&lt;note&gt;" suffix="&lt;/note&gt;"/>
+  </macro>
+  <macro name="jurisdiction">
+    <text variable="jurisdiction" prefix="&lt;jurisdiction&gt;" suffix="&lt;/jurisdiction&gt;"/>
+  </macro>
+  <macro name="original-publisher">
+    <text variable="original-publisher" prefix="&lt;original-publisher&gt;" suffix="&lt;/original-publisher&gt;"/>
+  </macro>
+  <macro name="number">
+    <text variable="number" prefix="&lt;number&gt;" suffix="&lt;/number&gt;"/>
+  </macro>
+  <macro name="version">
+    <text variable="version" prefix="&lt;version&gt;" suffix="&lt;/version&gt;"/>
+  </macro>
+  <macro name="section">
+    <text variable="section" prefix="&lt;section&gt;" suffix="&lt;/section&gt;"/>
+  </macro>
+  <macro name="scale">
+    <choose>
+      <if variable="scale">
+        <text variable="scale" prefix="&lt;scale&gt;" suffix="&lt;/scale&gt;"/>
+      </if>
+      <else>
+        
+        <text value="Escala indeterminada"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year" year-suffix-delimiter=", " after-collapse-delimiter="; ">
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter="  ">
+        <group delimiter=", ">
+          <text macro="author-citation"/>
+          <text macro="year-date"/>
+        </group>
+        <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" line-spacing="1">
+    <sort>
+      <key macro="responsability"/>
+      <key macro="year-date"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
+      <choose>
+        <if type="book" match="any">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="version" prefix="(Versión " suffix="), "/>
+            <text macro="online" font-style="italic"/>
+            <text macro="translator" suffix=", "/>
+            <text macro="editor" suffix=", "/>
+            <text macro="medium" suffix=", "/>
+            <text macro="collection" prefix="ser. " suffix=", "/>
+            <text macro="collection-editor" prefix="edit. ser. " suffix=", "/>
+            <text macro="publisher" prefix="Ed. " suffix=", "/>
+            <text macro="genre" suffix=". "/>
+            <text macro="edition" suffix=", "/>
+            <text macro="volume" prefix="vol. " suffix=", "/>
+            <text macro="number-of-pages" prefix="pp. " suffix=", "/>
+            <text macro="isbn" suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </if>
+        <else-if type="map">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="scale" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text macro="collection-editor" prefix=" edit. " suffix=", "/>
+            <text macro="collection" prefix="ser. " suffix=", " font-style="italic"/>
+            <text macro="publisher" prefix="Ed. " suffix=", "/>
+            <text macro="edition" suffix=", "/>
+            <text macro="genre" suffix=", "/>
+            <text macro="isbn" suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group>
+            <text macro="responsability" suffix=""/>
+            <text macro="title" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text macro="translator" suffix=", "/>
+            <text macro="editor" suffix=", "/>
+            <text variable="container-title" suffix=", &lt;/container-title&gt;" font-style="italic" prefix="&lt;container-title&gt;"/>
+            <text macro="collection" prefix="ser. " suffix=", " font-style="italic"/>
+            <text macro="issn" suffix=", "/>
+            <text macro="doi" suffix=", "/>
+            <text macro="volume"/>
+            <text macro="issue" prefix="(" suffix=")"/>
+            <text macro="page" prefix=": "/>
+            <text macro="date" prefix=", " suffix=". "/>
+            <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="article">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text macro="translator" font-style="italic" suffix=", "/>
+            <text macro="editor" font-style="italic" suffix=", "/>
+            <text macro="date-responsability" suffix=", "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="article-magazine">
+          <group>
+            <text macro="responsability" suffix=""/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text macro="page" suffix="pp., "/>
+            <text macro="container-title" suffix=", "/>
+            <text macro="issn" suffix=", "/>
+            <text macro="note" prefix="(" suffix="), "/>
+            <text macro="year-date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="article-newspaper">
+          <group>
+            <text macro="responsability" suffix=""/>
+            <text macro="title" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text variable="container-title" font-style="italic" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text macro="section" suffix=", "/>
+            <text macro="edition" suffix=", "/>
+            <text macro="page" suffix="pp., "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text variable="ISSN" prefix="&lt;ISSN&gt;ISSN-" suffix=", &lt;/ISSN&gt;"/>
+            <text macro="date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="chapter entry-encyclopedia entry entry-dictionary" match="any">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text macro="title" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text macro="container-author" prefix="en " suffix=", "/>
+            <text macro="translator" suffix=", "/>
+            <text macro="editor" suffix=", "/>
+            <text variable="container-title" font-style="italic" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text variable="collection-title" prefix="&lt;collection-title&gt;ser. " suffix=", &lt;/collection-title&gt;"/>
+            <text macro="collection-editor" prefix="edit. ser. " suffix=", "/>
+            <text macro="edition" suffix=", "/>
+            <text macro="isbn" suffix=", "/>
+            <text macro="volume" prefix="vol. " suffix=", "/>
+            <text macro="page" prefix="pp. " suffix=", "/>
+            <text macro="publisher" prefix="Ed. " suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="paper-conference">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text macro="title" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text variable="event" prefix="&lt;event&gt;En: " suffix=", &lt;/event&gt;" font-style="italic"/>
+            <text variable="collection-title" prefix="&lt;collection-title&gt;ser. " suffix=", &lt;/collection-title&gt;"/>
+            <text macro="isbn" suffix=", "/>
+            <text macro="doi" suffix=", "/>
+            <text macro="page" prefix="pp. " suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="year-date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group>
+            <text macro="responsability"/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text macro="number-of-pages" suffix="pp., "/>
+            <text variable="genre" prefix="&lt;genre&gt;Tesis (en opción al " suffix="), &lt;/genre&gt;"/>
+            <text macro="publisher" suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="year-date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="post webpage post-weblog" match="any">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="translator" font-style="italic" suffix=", "/>
+            <text variable="container-title" font-style="italic" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text macro="date" font-style="italic" suffix=", "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="report">
+          <group>
+            <text macro="responsability"/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text variable="publisher" suffix=", &lt;/publisher&gt;" prefix="&lt;publisher&gt;"/>
+            <text variable="collection-title" suffix=", &lt;/collection-title&gt;" prefix="&lt;collection-title&gt;"/>
+            <text variable="number" prefix="&lt;number&gt;No. " suffix=", &lt;/number&gt;"/>
+            <text macro="page" suffix="pp., "/>
+            <text variable="publisher-place" suffix=", &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+            <text macro="year-date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="online" font-style="italic"/>
+            <text macro="number" suffix=", "/>
+            <text macro="original-publisher" suffix=", "/>
+            <text macro="collection" suffix=", "/>
+            <text macro="page" suffix="pp., "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="date" prefix="Vig. " suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else-if type="interview">
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text variable="title" font-style="italic" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+            <text macro="note" prefix="[" suffix="], "/>
+            <text macro="online" font-style="italic"/>
+            <text macro="interviewer" prefix="entr. " suffix=", "/>
+            <text macro="medium" suffix=", "/>
+            <text macro="year-date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <text macro="responsability" suffix=" "/>
+            <text macro="title" prefix="¨" suffix="¨, "/>
+            <text macro="online" font-style="italic"/>
+            <text variable="container-title" font-style="italic" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text variable="collection-title" prefix="&lt;collection-title&gt;ser. " suffix=", &lt;/collection-title&gt;"/>
+            <text variable="event" prefix="&lt;event&gt;En: " suffix=", &lt;/event&gt;"/>
+            <text macro="medium" suffix=", "/>
+            <text macro="genre" suffix=", "/>
+            <text macro="edition" suffix=", "/>
+            <text macro="volume" prefix="vol. " suffix=", "/>
+            <text macro="issue" prefix="no. " suffix=", "/>
+            <text macro="number" prefix="no. " suffix=", "/>
+            <text macro="number-of-pages" prefix="pp. " suffix=", "/>
+            <text macro="page" prefix="pp. " suffix=", "/>
+            <text macro="publisher" prefix="Ed. " suffix=", "/>
+            <text macro="original-publisher" suffix=", "/>
+            <text macro="publisher-place" suffix=", "/>
+            <text macro="jurisdiction" suffix=", "/>
+            <text variable="ISSN" prefix="&lt;ISSN&gt;ISSN-" suffix=", &lt;/ISSN&gt;"/>
+            <text variable="ISBN" prefix="&lt;ISBN&gt;ISBN-" suffix=", &lt;/ISBN&gt;"/>
+            <text macro="archive" suffix=", "/>
+            <text macro="archive_location" suffix=", "/>
+            <text macro="note" prefix="(" suffix="), "/>
+            <text macro="date" suffix=". "/>
+            <text macro="url" suffix=" "/>
+            <text macro="accessed" suffix=". "/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>The Journal of Comparative Neurology</title>
+    <id>http://www.zotero.org/styles/the-journal-of-comparative-neurology</id>
+    <link href="http://www.zotero.org/styles/the-journal-of-comparative-neurology" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1096-9861/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </author>
+    <author>
+      <name>James Johnston</name>
+      <email>j.e.johnston@lse.ac.uk</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="science"/>
+    <issn>0021-9967</issn>
+    <eissn>1096-9861</eissn>
+    <summary>Style for The Journal of Comparative Neurology</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <name name-as-sort-order="all" sort-separator=" " initialize-with="" delimiter=", " delimiter-precedes-last="always"/>
+      <label form="long" prefix=", " suffix="."/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <text term="anonymous" form="short" text-case="capitalize-first" strip-periods="true"/>
+  </macro>
+  <macro name="author">
+    <group suffix=".">
+      <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+        <name name-as-sort-order="all" sort-separator=" " initialize-with="" delimiter=", " delimiter-precedes-last="always"/>
+        <label form="short" prefix=" " strip-periods="true"/>
+        <substitute>
+          <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+          <text macro="anon"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" and="text" delimiter=", " initialize-with="."/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+        <text macro="anon"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <group>
+      <text value="Available from:" suffix=" "/>
+      <text variable="URL" prefix="&lt;URL&gt;" suffix="&lt;/URL&gt;"/>
+    </group>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+  </macro>
+  <macro name="locator">
+    <label variable="locator" form="short" strip-periods="true"/>
+    <text variable="locator" prefix="&lt;locator&gt; " suffix="&lt;/locator&gt;"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place" prefix="&lt;publisher-place&gt;" suffix="&lt;/publisher-place&gt;"/>
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+    </group>
+  </macro>
+  <macro name="pages">
+    <text variable="page" prefix="&lt;page&gt;p " suffix="&lt;/page&gt;"/>
+  </macro>
+  <macro name="journal">
+    <text variable="container-title" form="short" strip-periods="true" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+    <choose>
+      <if variable="URL">
+        <text term="internet" prefix=" [" suffix="]" text-case="capitalize-first"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix=".&lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-issued">
+    <date variable="issued">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year-suffix">
+    <sort>
+      <key macro="year-issued"/>
+      <key macro="author-short"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <date variable="issued" delimiter=" ">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+        <text macro="locator"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" et-al-min="99" et-al-use-first="98">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-issued"/>
+    </sort>
+    <layout>
+      <text macro="author"/>
+      <date variable="issued" prefix=" " suffix=".">
+        <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+      </date>
+      <text macro="title" prefix=" " suffix="."/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group prefix=" " suffix="." delimiter=" ">
+            <text macro="edition"/>
+            <text macro="editor" prefix="(" suffix=")"/>
+          </group>
+          <text prefix=" " suffix="." macro="publisher"/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group prefix=" " delimiter=" ">
+            <text term="in" text-case="capitalize-first" suffix=":"/>
+            <text macro="editor"/>
+            <text variable="container-title" suffix=".&lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            <text variable="volume" prefix="&lt;volume&gt;Vol. " suffix=".&lt;/volume&gt;"/>
+            <text macro="edition"/>
+            <text variable="collection-title" suffix=".&lt;/collection-title&gt;" prefix="&lt;collection-title&gt;"/>
+            <group suffix=".">
+              <text macro="publisher"/>
+              <group suffix="." prefix=". " delimiter=". ">
+                <text macro="pages"/>
+              </group>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group prefix=" " suffix=".">
+            <text macro="journal"/>
+            <text variable="volume" prefix="&lt;volume&gt; " suffix="&lt;/volume&gt;"/>
+            <text variable="page" prefix="&lt;page&gt;:" suffix="&lt;/page&gt;"/>
+          </group>
+        </else>
+      </choose>
+      <text prefix=" " macro="access"/>
+    </layout>
+  </bibliography>
+</style>

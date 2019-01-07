@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="de-DE">
+  <info>
+    <title>Computer und Recht (German)</title>
+    <title-short>CR</title-short>
+    <id>http://www.zotero.org/styles/computer-und-recht</id>
+    <link href="http://www.zotero.org/styles/computer-und-recht" rel="self"/>
+    <link href="http://www.zotero.org/styles/neue-juristische-wochenschrift" rel="template"/>
+    <link href="http://www.computerundrecht.de/cr.htm" rel="documentation"/>
+    <author>
+      <name>Reto Mantz</name>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <issn>0179-1990</issn>
+    <summary>Computer und Recht
+    Style for articles in German law journal CR
+    - based on style Neue Juristische Wochenschrift (NJW) http://www.zotero.org/styles/neue-juristische-wochenschrift
+    - Commentaries and handbooks should use publication type "entry-encyclopedia". See details for different citations below.
+    - If a book or entry-encyclopedia is cited for the 2nd time (or more), "title and edition" are substituted by (o. Fn. ...)
+      (see footnote ...)
+    - see more details below in the comments</summary>
+    <updated>2014-12-12T09:18:39+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  
+  <locale xmlns="http://purl.org/net/xbiblio/csl" xml:lang="de-DE">
+    <date form="numeric">
+      <date-part name="day" form="numeric" suffix="."/>
+      <date-part name="month" form="numeric" suffix="."/>
+      <date-part name="year"/>
+    </date>
+  </locale>
+  <macro name="author">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name delimiter="/ " name-as-sort-order="all" sort-separator=", " form="long"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-note">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="/" name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="author-commentary">
+    <choose>
+      <if variable="collection-editor">
+        <names variable="collection-editor" prefix="&lt;collection-editor&gt;" suffix="&lt;/collection-editor&gt;">
+          <name form="short" delimiter="/" name-as-sort-order="all"/>
+        </names>
+      </if>
+      <else>
+        <names variable="author editor" prefix="&lt;author editor&gt;" suffix="&lt;/author editor&gt;">
+          <name form="short" delimiter="/" name-as-sort-order="all"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author-chapter">
+    <names variable="container-author" prefix="&lt;container-author&gt;" suffix="&lt;/container-author&gt;">
+      <name delimiter="/ " name-as-sort-order="all" sort-separator=", " form="short"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="locator-with-label">
+    <group delimiter=" ">
+      <label variable="locator" form="symbol"/>
+      <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+    </group>
+  </macro>
+  <macro name="autor-editor-note">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="/" sort-separator=""/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="journalname-year">
+    <group delimiter=" ">
+      <text variable="container-title-short" prefix="&lt;container-title-short&gt;" suffix="&lt;/container-title-short&gt;"/>
+      <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt;" suffix="&lt;/issued&gt;"/>
+    </group>
+  </macro>
+  <macro name="firstpage-locator">
+    <text variable="page-first" prefix="&lt;page-first&gt;" suffix="&lt;/page-first&gt;"/>
+    <text variable="locator" prefix="&lt;locator&gt; (" suffix=")&lt;/locator&gt;"/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if match="any" is-numeric="edition">
+        <group delimiter=" " prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;">
+          <number vertical-align="baseline" suffix=" " variable="edition" form="ordinal"/>
+          <text term="edition" form="short" suffix="."/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" form="short" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+      </else>
+    </choose>
+    <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt; " suffix="&lt;/issued&gt;"/>
+  </macro>
+  <citation et-al-min="5" et-al-use-first="1">
+    <layout delimiter="; ">
+      <choose>
+        
+        <if type="article-journal">
+          <group delimiter=", ">
+            <text macro="author-note"/>
+            <text macro="journalname-year"/>
+            <text macro="firstpage-locator"/>
+          </group>
+        </if>
+        <else-if type="article-newspaper">
+          <text macro="author-note" suffix=", "/>
+          <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+          <date form="numeric" variable="issued" prefix="&lt;issued&gt;" suffix="&lt;/issued&gt;"/>
+          <text variable="URL" prefix="&lt;URL&gt;, " suffix="&lt;/URL&gt;"/>
+        </else-if>
+        
+        <else-if type="book">
+          <text macro="autor-editor-note"/>
+          <text variable="title" form="short" prefix="&lt;title&gt;, " suffix=", &lt;/title&gt;"/>
+          <text macro="edition"/>
+          <text variable="locator" prefix="&lt;locator&gt;, " suffix="&lt;/locator&gt;"/>
+        </else-if>
+        
+        <else-if type="entry-encyclopedia">
+          <choose>
+            <if variable="container-title">
+              <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            </if>
+            <else>
+              <text macro="author-commentary" suffix=", "/>
+              <text variable="title" suffix=", &lt;/title&gt;" form="short" prefix="&lt;title&gt;"/>
+            </else>
+          </choose>
+          <text macro="edition"/>
+          <text variable="locator" prefix="&lt;locator&gt;, " suffix="&lt;/locator&gt;"/>
+        </else-if>
+        
+        <else-if type="chapter">
+          <text macro="autor-editor-note" suffix=" in "/>
+          <text macro="author-chapter" suffix=", "/>
+          <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+          <text macro="edition"/>
+          <text macro="firstpage-locator" prefix=", "/>
+        </else-if>
+        
+        <else-if type="legal_case" match="any">
+          <text variable="authority" suffix=", &lt;/authority&gt;" prefix="&lt;authority&gt;"/>
+          <text variable="genre" suffix=" v. &lt;/genre&gt;" prefix="&lt;genre&gt;"/>
+          <date form="numeric" variable="issued" suffix=" – &lt;/issued&gt;" prefix="&lt;issued&gt;"/>
+          <text variable="number" prefix="&lt;number&gt;" suffix="&lt;/number&gt;"/>
+          <choose>
+            
+            <if variable="container-title">
+              <text variable="container-title" form="short" prefix="&lt;container-title&gt;, " suffix=" &lt;/container-title&gt;"/>
+              <text variable="volume" suffix=", &lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+              <text macro="firstpage-locator"/>
+            </if>
+            <else>
+              <text variable="locator" prefix="&lt;locator&gt;, " suffix="&lt;/locator&gt;"/>
+            </else>
+          </choose>
+          <choose>
+            <if variable="title-short">
+              <text variable="title-short" prefix="&lt;title-short&gt; – " suffix="&lt;/title-short&gt;"/>
+            </if>
+          </choose>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <text macro="author-note"/>
+            <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text macro="locator-with-label"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <choose>
+        <if type="article-journal">
+          <group delimiter=", ">
+            <text macro="author-note"/>
+            <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text macro="journalname-year"/>
+            <text variable="page-first" prefix="&lt;page-first&gt;" suffix="&lt;/page-first&gt;"/>
+          </group>
+        </if>
+        <else-if type="book">
+          <text macro="autor-editor-note" suffix=", "/>
+          <text variable="title" form="short" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+          <text macro="edition"/>
+        </else-if>
+        <else-if type="article-newspaper">
+          <text macro="author-note" suffix=", "/>
+          <text variable="container-title-short" prefix="&lt;container-title-short&gt;" suffix="&lt;/container-title-short&gt;"/>
+          <date form="numeric" variable="issued" prefix="&lt;issued&gt; v. " suffix="&lt;/issued&gt;"/>
+          <text variable="URL" prefix="&lt;URL&gt;, " suffix="&lt;/URL&gt;"/>
+        </else-if>
+        <else-if type="entry-encyclopedia">
+          <choose>
+            <if variable="container-title">
+              <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            </if>
+            <else>
+              <text macro="author-commentary" suffix=", "/>
+              <text variable="title" suffix=", &lt;/title&gt;" form="short" prefix="&lt;title&gt;"/>
+            </else>
+          </choose>
+          <text macro="edition"/>
+        </else-if>
+        <else-if type="chapter">
+          <text macro="autor-editor-note" suffix=" in "/>
+          <text macro="author-chapter" suffix=", "/>
+          <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+          <text macro="edition"/>
+          <text variable="page-first" prefix="&lt;page-first&gt;, " suffix="&lt;/page-first&gt;"/>
+        </else-if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

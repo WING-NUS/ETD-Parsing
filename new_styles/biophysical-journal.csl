@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>Biophysical Journal</title>
+    <id>http://www.zotero.org/styles/biophysical-journal</id>
+    <link href="http://www.zotero.org/styles/biophysical-journal" rel="self"/>
+    <link href="http://download.cell.com/images/edimages/Biophys/Instructions_to_Authors.pdf" rel="documentation"/>
+    <author>
+      <name>Upinder S. Bhalla</name>
+      <email>bhalla@ncbs.res.in</email>
+    </author>
+    <contributor>
+      <name>Michael Berkowitz</name>
+      <email>mberkowi@gmu.edu</email>
+    </contributor>
+    <contributor>
+      <name>Sean Takats</name>
+      <email>stakats@gmu.edu</email>
+    </contributor>
+    <contributor>
+      <name>Sebsatian Karcher</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0006-3495</issn>
+    <eissn>1542-0086</eissn>
+    <summary>Style for Biophysical Journal</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix=". &lt;/author&gt;" prefix="&lt;author&gt;">
+      <name and="text" sort-separator=", " initialize-with="." name-as-sort-order="first" delimiter=", " delimiter-precedes-last="always"/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" suffix=". &lt;/editor&gt;" prefix="&lt;editor&gt;">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="first" delimiter=", " delimiter-precedes-last="always"/>
+      <label form="long" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="date">
+    <date variable="issued" suffix=". ">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher-place" suffix=": &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+    <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+  </macro>
+  <macro name="title">
+    <group delimiter=" ">
+      <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix=".&lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter=", ">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="99" et-al-use-first="98" second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" suffix=". &lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+      <text macro="author"/>
+      <text macro="date"/>
+      <text macro="title" suffix=". "/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <text macro="edition" prefix=" "/>
+          <text macro="publisher" prefix=" "/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group prefix=" " suffix=". ">
+            <text term="in" suffix=": " text-case="capitalize-first"/>
+            <text macro="editor"/>
+            <text variable="container-title" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+          </group>
+          <text macro="publisher" prefix=" "/>
+          <group prefix=". ">
+            <label variable="page" form="short" suffix=" "/>
+            <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+          </group>
+        </else-if>
+        <else>
+          <text variable="container-title" suffix=". &lt;/container-title&gt;" form="short" prefix="&lt;container-title&gt;"/>
+          <choose>
+            <if variable="page">
+              <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+              <text variable="page" prefix="&lt;page&gt;: " suffix=".&lt;/page&gt;"/>
+            </if>
+            <else>
+              <text variable="volume" suffix=".&lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+            </else>
+          </choose>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

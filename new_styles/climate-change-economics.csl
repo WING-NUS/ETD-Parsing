@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
+  <info>
+    <title>Climate Change Economics</title>
+    <title-short>CCE</title-short>
+    <id>http://www.zotero.org/styles/climate-change-economics</id>
+    <link href="http://www.zotero.org/styles/climate-change-economics" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-institutional-and-theoretical-economics" rel="template"/>
+    <link href="http://www.worldscientific.com/page/cce/submission-guidelines" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="geography"/>
+    <issn>2010-0078</issn>
+    <eissn>2010-0086</eissn>
+    <updated>2017-08-01T15:15:58+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name and="text" delimiter-precedes-last="always" initialize-with="" name-as-sort-order="first"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" and="text" delimiter=", " initialize-with=". "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <group delimiter=". ">
+      <group delimiter=" ">
+        <text term="available at" text-case="capitalize-first"/>
+        <text variable="URL" prefix="&lt;URL&gt;" suffix="&lt;/URL&gt;"/>
+      </group>
+      <group delimiter=" ">
+        <text term="accessed" text-case="capitalize-first"/>
+        <date form="text" variable="accessed" prefix="&lt;accessed&gt;" suffix="&lt;/accessed&gt;"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publication-details">
+    <group delimiter=", ">
+      <text macro="volume-book"/>
+      <text macro="edition"/>
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+    </group>
+  </macro>
+  <macro name="volume-book">
+    <choose>
+      <if match="any" is-numeric="volume">
+        <group delimiter=" " prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;">
+          <text term="volume" form="short"/>
+          <number variable="volume"/>
+        </group>
+      </if>
+      <else>
+        <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" collapse="year" cite-group-delimiter=", ">
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+        <group delimiter=" ">
+          <label variable="locator" form="short"/>
+          <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="ascending"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author"/>
+        <text macro="issued" prefix="(" suffix="). "/>
+      </group>
+      <choose>
+        <if type="article-journal article-magazine article-newspaper" match="any">
+          <group delimiter=". ">
+            <text variable="title" quotes="false" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <group delimiter=", ">
+              <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+              <choose>
+                <if match="any" variable="page volume">
+                  <group>
+                    <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+                    <text variable="issue" prefix="&lt;issue&gt;(" suffix=")&lt;/issue&gt;"/>
+                  </group>
+                  <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+                </if>
+                <else>
+                  <text variable="DOI" prefix="&lt;DOI&gt;https://doi.org/" suffix="&lt;/DOI&gt;"/>
+                </else>
+              </choose>
+            </group>
+          </group>
+        </if>
+        <else-if type="report" match="any">
+          <group delimiter=" ">
+            <text variable="title" quotes="false" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <group delimiter=" ">
+              <text variable="collection-title" prefix="&lt;collection-title&gt;" suffix="&lt;/collection-title&gt;"/>
+              <text variable="genre" prefix="&lt;genre&gt;" suffix="&lt;/genre&gt;"/>
+              <text variable="number" prefix="&lt;number&gt;No. " suffix="&lt;/number&gt;"/>
+            </group>
+            <text macro="publication-details"/>
+          </group>
+        </else-if>
+        <else-if type="webpage" match="any">
+          <group delimiter=". ">
+            <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text macro="access"/>
+          </group>
+        </else-if>
+        <else-if type="chapter paper-conference" match="any">
+          <group delimiter=". ">
+            <text variable="title" quotes="false" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text term="in" text-case="capitalize-first"/>
+                <text variable="container-title" text-case="title" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+              </group>
+              <names variable="editor translator" delimiter=", " prefix="&lt;editor translator&gt;" suffix="&lt;/editor translator&gt;">
+                <name delimiter-precedes-last="always" initialize-with="."/>
+                <label form="short" prefix=" (" suffix=")"/>
+              </names>
+            </group>
+            <text macro="publication-details"/>
+          </group>
+        </else-if>
+        <else-if type="thesis" match="any">
+          <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+          <text variable="genre" prefix="&lt;genre&gt;" suffix="&lt;/genre&gt;"/>
+          <text macro="publication-details"/>
+        </else-if>
+        <else>
+          <group delimiter=". ">
+            <text variable="title" font-style="italic" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+            <text macro="publication-details"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

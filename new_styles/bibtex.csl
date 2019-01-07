@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>BibTeX generic citation style</title>
+    <id>http://www.zotero.org/styles/bibtex</id>
+    <link href="http://www.zotero.org/styles/bibtex" rel="self"/>
+    <link href="http://www.bibtex.org/" rel="documentation"/>
+    <author>
+      <name>Markus Schaffner</name>
+    </author>
+    <contributor>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <updated>2012-09-14T21:22:32+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="zotero2bibtexType">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <text value="book"/>
+      </if>
+      <else-if type="chapter" match="any">
+        <text value="inbook"/>
+      </else-if>
+      <else-if type="article article-journal article-magazine article-newspaper" match="any">
+        <text value="article"/>
+      </else-if>
+      <else-if type="thesis" match="any">
+        <text value="phdthesis"/>
+      </else-if>
+      <else-if type="manuscript" match="any">
+        <text value="unpublished"/>
+      </else-if>
+      <else-if type="paper-conference" match="any">
+        <text value="inproceedings"/>
+      </else-if>
+      <else-if type="report" match="any">
+        <text value="techreport"/>
+      </else-if>
+      <else>
+        <text value="misc"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="citeKey">
+    <group delimiter="_">
+      <text macro="author-short" text-case="lowercase"/>
+      <text macro="issued-year"/>
+    </group>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="_" delimiter-precedes-last="always"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+        <choose>
+          <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <text variable="title" form="short" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+          </if>
+          <else>
+            <text variable="title" form="short" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued-year">
+    <date variable="issued">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="issued-month">
+    <date variable="issued">
+      <date-part name="month" form="short" strip-periods="true" prefix="&lt;month&gt;" suffix="&lt;/month&gt;"/>
+    </date>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name sort-separator=", " delimiter=" and " delimiter-precedes-last="always" name-as-sort-order="all"/>
+      <label form="long" text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="editor-translator">
+    <names variable="editor translator" delimiter=", " prefix="&lt;editor translator&gt;" suffix="&lt;/editor translator&gt;">
+      <name sort-separator=", " delimiter=" and " delimiter-precedes-last="always" name-as-sort-order="all"/>
+      <label form="long" text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+  </macro>
+  <macro name="number">
+    <text variable="issue" prefix="&lt;issue&gt;" suffix="&lt;/issue&gt;"/>
+    <text variable="number" prefix="&lt;number&gt;" suffix="&lt;/number&gt;"/>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text variable="container-title" prefix="&lt;container-title&gt; booktitle={" suffix="}&lt;/container-title&gt;"/>
+      </if>
+      <else>
+        <text variable="container-title" prefix="&lt;container-title&gt; journal={" suffix="}&lt;/container-title&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if type="thesis">
+        <text variable="publisher" prefix="&lt;publisher&gt; school={" suffix="}&lt;/publisher&gt;"/>
+      </if>
+      <else-if type="report">
+        <text variable="publisher" prefix="&lt;publisher&gt; institution={" suffix="}&lt;/publisher&gt;"/>
+      </else-if>
+      <else>
+        <text variable="publisher" prefix="&lt;publisher&gt; publisher={" suffix="}&lt;/publisher&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+  </macro>
+  <macro name="edition">
+    <text variable="edition" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+  </macro>
+  <citation et-al-min="11" et-al-use-first="10" disambiguate-add-year-suffix="true" disambiguate-add-names="false" disambiguate-add-givenname="false" collapse="year">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout delimiter="_">
+      <text macro="citeKey"/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="false" et-al-min="11" et-al-use-first="10">
+    <sort>
+      <key macro="author"/>
+      <key variable="issued"/>
+    </sort>
+    <layout>
+      <text macro="zotero2bibtexType" prefix=" @"/>
+      <group prefix="{" suffix=" }" delimiter=", ">
+        <text macro="citeKey"/>
+        <text variable="publisher-place" prefix="&lt;publisher-place&gt; place={" suffix="}&lt;/publisher-place&gt;"/>
+        
+        <text variable="chapter-number" prefix="&lt;chapter-number&gt; chapter={" suffix="}&lt;/chapter-number&gt;"/>
+        
+        <text macro="edition" prefix=" edition={" suffix="}"/>
+        
+        <text variable="collection-title" prefix="&lt;collection-title&gt; series={" suffix="}&lt;/collection-title&gt;"/>
+        <text macro="title" prefix=" title={" suffix="}"/>
+        <text variable="volume" prefix="&lt;volume&gt; volume={" suffix="}&lt;/volume&gt;"/>
+        
+        <text variable="ISBN" prefix="&lt;ISBN&gt; ISBN={" suffix="}&lt;/ISBN&gt;"/>
+        <text variable="ISSN" prefix="&lt;ISSN&gt; ISSN={" suffix="}&lt;/ISSN&gt;"/>
+        
+        <text variable="archive_location" prefix="&lt;archive_location&gt; archiveLocation={" suffix="}&lt;/archive_location&gt;"/>
+        <text variable="URL" prefix="&lt;URL&gt; url={" suffix="}&lt;/URL&gt;"/>
+        <text variable="DOI" prefix="&lt;DOI&gt; DOI={" suffix="}&lt;/DOI&gt;"/>
+        <text variable="abstract" prefix="&lt;abstract&gt; abstractNote={" suffix="}&lt;/abstract&gt;"/>
+        <text variable="note" prefix="&lt;note&gt; note={" suffix="}&lt;/note&gt;"/>
+        <text macro="number" prefix=" number={" suffix="}"/>
+        <text macro="container-title"/>
+        <text macro="publisher"/>
+        <text macro="author" prefix=" author={" suffix="}"/>
+        <text macro="editor-translator" prefix=" editor={" suffix="}"/>
+        <text macro="issued-year" prefix=" year={" suffix="}"/>
+        <text macro="issued-month" prefix=" month={" suffix="}"/>
+        <text macro="pages" prefix=" pages={" suffix="}"/>
+        <text variable="collection-title" prefix="&lt;collection-title&gt; collection={" suffix="}&lt;/collection-title&gt;"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>
