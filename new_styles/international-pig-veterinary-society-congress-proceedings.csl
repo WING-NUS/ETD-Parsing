@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>International Pig Veterinary Society Congress Proceedings</title>
+    <title-short>IPVS</title-short>
+    <id>http://www.zotero.org/styles/international-pig-veterinary-society-congress-proceedings</id>
+    <link href="http://www.zotero.org/styles/international-pig-veterinary-society-congress-proceedings" rel="self"/>
+    <link href="http://vw.theipvs.com/" rel="documentation"/>
+    <author>
+      <name>Vincent Auvigne</name>
+      <email>vincent.auvigne@ekipaj.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <summary>International Pig Veterinary Society Proceeding Style</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name sort-separator=", " delimiter=", " and="symbol" initialize-with="." delimiter-precedes-last="never" name-as-sort-order="all"/>
+    </names>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <group prefix=" " suffix=".">
+          <text variable="publisher" suffix=", &lt;/publisher&gt;" prefix="&lt;publisher&gt;"/>
+          <text variable="publisher-place" suffix=", &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <date variable="issued">
+            <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+          </date>
+          <text variable="number-of-pages" prefix="&lt;number-of-pages&gt;, " suffix=" p.&lt;/number-of-pages&gt;"/>
+        </group>
+      </if>
+      <else>
+        <date prefix=" (" suffix=")." variable="issued">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout vertical-align="baseline" delimiter="," prefix="(" suffix=")">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="2" et-al-use-first="1" second-field-align="flush" entry-spacing="0">
+    <layout>
+      <text variable="citation-number" suffix=".&lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+      <text macro="author"/>
+      <text macro="issuance"/>
+      <text variable="container-title" font-style="normal" prefix="&lt;container-title&gt; " suffix=", &lt;/container-title&gt;" form="short"/>
+      <text variable="volume" suffix=", &lt;/volume&gt;" font-weight="normal" prefix="&lt;volume&gt;"/>
+      <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" and="text" et-al-min="3" et-al-use-first="1" demote-non-dropping-particle="sort-only" default-locale="en-GB">
+  <info>
+    <title>University for the Creative Arts (figures and illustrations)</title>
+    <title-short>uca-illustrations</title-short>
+    <id>http://www.zotero.org/styles/university-for-the-creative-arts-figures</id>
+    <link href="http://www.zotero.org/styles/university-for-the-creative-arts-figures" rel="self"/>
+    <link href="http://www.zotero.org/styles/chicago-figures" rel="template"/>
+    <link href="http://www.uca.ac.uk/library/academic-support/harvard-referencing/" rel="documentation"/>
+    <author>
+      <name>Ian Badger</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="humanities"/>
+    <updated>2017-03-23T09:17:30+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="accessed">accessed on</term>
+      <term name="no date" form="short">s.d.</term>
+    </terms>
+  </locale>
+  <macro name="accessed">
+    <choose>
+      <if match="all" variable="URL">
+        <group delimiter=" ">
+          <group delimiter=": ">
+            <text term="at" text-case="capitalize-first"/>
+            <text variable="URL" prefix="&lt;URL&gt;" suffix="&lt;/URL&gt;"/>
+          </group>
+          <group prefix="(" suffix=")" delimiter=" ">
+            <text term="accessed" text-case="capitalize-first"/>
+            <date variable="accessed" delimiter=" ">
+              <date-part name="day" prefix="&lt;day&gt;" suffix="&lt;/day&gt;"/>
+              <date-part name="month" prefix="&lt;month&gt;" suffix="&lt;/month&gt;"/>
+              <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+            </date>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <citation>
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text term="figure" form="symbol" text-case="capitalize-first"/>
+        <text variable="citation-number" suffix=".&lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+        <text variable="title" font-style="italic" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+        <group>
+          <choose>
+            <if match="all" variable="issued">
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt;" suffix="&lt;/issued&gt;"/>
+            </if>
+            <else>
+              <text term="no date" form="short"/>
+            </else>
+          </choose>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="3" et-al-use-first="1">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout>
+      <group delimiter=" ">
+        <text term="figure"/>
+        <text variable="citation-number" suffix=".&lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+        <group delimiter=" ">
+          <names variable="author" suffix=".&lt;/author&gt;" prefix="&lt;author&gt;">
+            <name and="text" delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all"/>
+            <label form="short"/>
+            <et-al font-style="italic"/>
+            <substitute>
+              <text variable="title" font-style="italic" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+            </substitute>
+          </names>
+          <choose>
+            <if match="any" variable="issued">
+              <date variable="issued" prefix="(" suffix=")">
+                <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+              </date>
+            </if>
+            <else>
+              <text term="no date" form="short" prefix="(" suffix=")"/>
+            </else>
+          </choose>
+          <text variable="title" font-style="italic" suffix=".&lt;/title&gt;" prefix="&lt;title&gt;"/>
+          <choose>
+            <if match="any" variable="title-short">
+              <text variable="title-short" font-style="italic" suffix=".&lt;/title-short&gt;" prefix="&lt;title-short&gt;"/>
+            </if>
+          </choose>
+          <choose>
+            <if type="graphic" match="any">
+              <text variable="medium" prefix="&lt;medium&gt;[" suffix="]&lt;/medium&gt;"/>
+              <text variable="note" prefix="&lt;note&gt;In: " suffix="&lt;/note&gt;"/>
+              <text macro="accessed"/>
+            </if>
+            <else-if type="map" match="any">
+              <text variable="genre" prefix="&lt;genre&gt;[" suffix="]&lt;/genre&gt;"/>
+              <text variable="scale" suffix=".&lt;/scale&gt;" prefix="&lt;scale&gt;"/>
+              <text variable="publisher-place" suffix=": &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+              <text variable="publisher" suffix=".&lt;/publisher&gt;" prefix="&lt;publisher&gt;"/>
+              <text variable="collection-title" prefix="&lt;collection-title&gt;(" suffix=").&lt;/collection-title&gt;"/>
+              <text macro="accessed"/>
+            </else-if>
+          </choose>
+        </group>
+      </group>
+    </layout>
+  </bibliography>
+</style>

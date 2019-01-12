@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+  <info>
+    <title>History and Theory</title>
+    <id>http://www.zotero.org/styles/history-and-theory</id>
+    <link href="http://www.zotero.org/styles/history-and-theory" rel="self"/>
+    <link href="http://www.historyandtheory.org/stylesheet.pdf" rel="documentation"/>
+    <author>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="history"/>
+    <issn>0018-2656</issn>
+    <eissn>1468-2303</eissn>
+    <summary>HistoryandTheory.Org is an international journal History and Theory,
+    which is devoted to the theory and philosophy of history</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor translator" delimiter=", " prefix="&lt;editor translator&gt;" suffix="&lt;/editor translator&gt;">
+      <label form="short" suffix=" "/>
+      <name and="text" delimiter=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name and="text" delimiter=", "/>
+      <label form="short" prefix=", " strip-periods="true"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <names variable="translator" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <text variable="title" form="short" font-style="italic" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </if>
+      <else>
+        <text variable="title" form="short" quotes="true" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place" prefix="&lt;publisher-place&gt;" suffix="&lt;/publisher-place&gt;"/>
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+    </group>
+  </macro>
+  <macro name="date">
+    <date variable="issued">
+      <date-part name="month" suffix=" &lt;/month&gt;" prefix="&lt;month&gt;"/>
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="volumes">
+    <group delimiter=" ">
+      <text variable="number-of-volumes" prefix="&lt;number-of-volumes&gt;" suffix="&lt;/number-of-volumes&gt;"/>
+      <text term="volume" form="short" plural="true" strip-periods="true"/>
+    </group>
+  </macro>
+  <macro name="pageno">
+    <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+  </macro>
+  <macro name="pageref">
+    <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+  </macro>
+  <macro name="volref">
+    <group delimiter=": ">
+      <text variable="volume" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+      <text variable="issue" prefix="&lt;issue&gt;" suffix="&lt;/issue&gt;"/>
+    </group>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text term="in" suffix=" "/>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+      </if>
+      <else>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <citation>
+    <layout suffix="." delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author"/>
+        <choose>
+          <if type="chapter paper-conference" match="any">
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <group delimiter=", ">
+                  <text macro="title"/>
+                  <text macro="container"/>
+                  <text macro="editor"/>
+                </group>
+                <group prefix="(" suffix=")" delimiter=", ">
+                  <text macro="publisher"/>
+                  <text macro="date"/>
+                </group>
+              </group>
+              <text macro="volref"/>
+              <text macro="volumes"/>
+              <text macro="pageno"/>
+              <text macro="pageref"/>
+            </group>
+          </if>
+          <else>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <group delimiter=", ">
+                  <text macro="title"/>
+                  <text macro="editor"/>
+                  <text macro="container"/>
+                </group>
+                <group prefix="(" suffix=")" delimiter=", ">
+                  <text macro="publisher"/>
+                  <text macro="date"/>
+                </group>
+              </group>
+              <text macro="volref"/>
+              <text macro="volumes"/>
+              <text macro="pageno"/>
+              <text macro="pageref"/>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </citation>
+</style>
