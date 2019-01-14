@@ -89,10 +89,10 @@ def tokenise_idx(path_to_idx_files: str, path_to_sanitised_data: str):
 
     return folds
 
-training_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/train_style_idx_shuffled.txt'),
+training_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/train_style_idx.txt'),
                              os.path.abspath('/Users/yuanchuan/Downloads/data/ETD/annotated/journals'))
 
-val_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/val_style_idx_shuffled.txt'),
+val_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/val_style_idx.txt'),
                         os.path.abspath('/Users/yuanchuan/Downloads/data/ETD/annotated/journals'))
 
 def write_tokens_as_lines(data: list, file: str):
