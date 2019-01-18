@@ -17,16 +17,28 @@ def _preprocess(text):
     return text.strip().split()
 
 
-#'../DataParser/data/0/0000/1.b2s'
-#'../DataParser/data/0/0000/2.b2s'
-with open('../DataParser/data/0/0000/0.b2s', 'r') as styles, open('../DataParser/data/0/0000/0.sl', 'r') as lstyles:
-    style_string = styles.readlines()
-    lstyle_string = lstyles.readlines()
+with open('../DataParser/data/0/0000/0.b2s', 'r') as styles:
+    all = styles.readlines()
+    style_string = []
+    lstyle_string = []
+    all2 = []
+    for item in all:
+        a = item.strip()
+        if a is not '':
+            all2.append(a)
+
+    style_string = [all2[i] for i in xrange(len(all2)) if i%2 == 0]
+    lstyle_string = [all2[i] for i in xrange(len(all2)) if i%2 != 0]
+
+    assert(len(style_string) == len(lstyle_string))
+
+
+
 
 
 tfidf_vectorizer = TfidfVectorizer( max_features=5000, lowercase=False,
                                     stop_words=None,
-                                   use_idf=True, tokenizer=_preprocess, ngram_range=(1, 3))
+                                   use_idf=False, tokenizer=_preprocess, ngram_range=(1, 4))
 tfidf_matrix = tfidf_vectorizer.fit_transform([' '.join(item).decode('utf-8', errors='replace') for item in style_string])
 
 feats_names = tfidf_vectorizer.get_feature_names()
@@ -74,7 +86,7 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
     #     print a
     # static_list()
 
-    static_color_list = list(set(['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#808000', '#ffd8b1', '#000075', '#808080','#DF87A6', '#A63C72', '#7D3997', '#91C1E5', '#196BE0', '#6C1F99', '#A4A6B9', '#6DBC1F', '#E2CF4A', '#0D356D', '#DC6D0D', '#BCACE2', '#6A128D', '#B93AB9', '#9C16AF', '#6E7A1C', '#EF508F', '#A34DA5', '#34A6B7', '#292349', '#9074D1', '#3D435E', '#D3E734', '#3FFF48', '#CD5A09', '#A88348', '#27F05C', '#D20076', '#E4B25C', '#871483']))
+    static_color_list = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#000000', '#9a6324', '#fffac8', '#800000', '#808000', '#ffd8b1', '#000075', '#808080','#DF87A6', '#A63C72', '#7D3997', '#91C1E5', '#196BE0', '#6C1F99', '#A4A6B9', '#6DBC1F', '#E2CF4A', '#0D356D', '#DC6D0D', '#BCACE2', '#6A128D', '#B93AB9', '#9C16AF', '#6E7A1C', '#EF508F', '#A34DA5', '#34A6B7', '#292349', '#9074D1', '#3D435E', '#D3E734', '#3FFF48', '#CD5A09', '#A88348', '#27F05C', '#D20076', '#E4B25C', '#871483']
 
     unique_color_list = {}
     unique_labels = list(set(labels))
@@ -92,12 +104,12 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
     # iterate through groups to layer the plot
     # note that I use the cluster_name and cluster_color dicts with the 'name' lookup to return the appropriate color/label
     for group, name, x, y in zip(labels, names, xs, ys):
-        # if group == 'generic-base':
-        #     ax.plot(x, y, marker='*', linestyle='', ms=12,
-        #             label=names, color=unique_color_list[group],
-        #             markersize=2,
-        #             mec='none')
-        #     ax.text(x, y, name, size=12)
+        if group == 'generic-base':
+            ax.plot(x, y, marker='*', linestyle='', ms=12,
+                    label=names, color=unique_color_list[group],
+                    markersize=2,
+                    mec='none')
+            #ax.text(x, y, name, size=12)
 
         ax.plot(x, y, marker='.', linestyle='', ms=12,
                 label=names, color=unique_color_list[group],
@@ -121,7 +133,16 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
         name_map = {'acm-sigchi-proceedings-extended-abstract-format':'ACM', 'chicago-author-date':'Chicago-AD',
                     'apa':'APA', 'modern-language-association':'MLA',
                     'turabian-fullnote-bibliography':'Turabian', 'ieee':'IEEE', 'chicago-fullnote-bibliography':'Chicago-NB',
-                    'nature':'Nature', 'vancouver':'Vancouver', 'elsevier-harvard':'Elsevier-Harvard'}
+                    'nature':'Nature', 'vancouver':'Vancouver', 'elsevier-harvard':'Elsevier-Harvard',
+                    'harvard-cranfield-university':'Harvard-Cranfield',
+                    'taylor-and-francis-national-library-of-medicine':'Taylor-Francis-Medicine', 'iso690-author-date-fr':'ISO690-FR',
+                    'international-labour-organization':'ILO',
+                    'harvard-institut-fur-praxisforschung-de': 'Harvard-DE',
+                    'harvard-deakin-university': 'Harvard-Deakin',
+                    'harvard-kings-college-london': 'Harvard-KCL',
+                    'springer-vancouver-author-date': 'Springer-Vancouver-AD',
+                    'springer-vancouver' : 'Springer-Vancouver'
+                    }
 
         if name in name_map.keys():
            ax.text(x, y, name_map[name], size=12)

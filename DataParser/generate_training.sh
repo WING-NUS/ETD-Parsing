@@ -62,14 +62,16 @@ then
     while (( ${#myarray[@]} > i )); do
         if [ ${entry: -5} == ".lbib" ] && [ "${mask_array[i]}" -lt 20000 ]
           then
-          $citeproc_tool_path$citeproc_binary bibliography -i $entry -s  "${myarray[i]}"  >>  $out_dir/${BASE%.*}.b2s
+          $citeproc_tool_path$citeproc_binary bibliography -i $entry -s  "${myarray[i]}" >>  $out_dir/${BASE%.*}.b2s
           if [ "$?" == 0 ]
              then
              a=$(grep 'category field' "$style_files${myarray[i]}".csl | tr -d '\n')
-             echo "${myarray[i]}" $a>>  $out_dir/${BASE%.*}.sl
+             echo "${myarray[i]}" $a>>  $out_dir/${BASE%.*}.b2s
+             #$out_dir/${BASE%.*}.sl
           fi
 	fi
         ((i++))
     done
+    exit
   done
 fi
