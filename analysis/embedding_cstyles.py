@@ -30,6 +30,8 @@ with open('../DataParser/data/0/0000/0.b2s', 'r') as styles:
     style_string = [all2[i] for i in xrange(len(all2)) if i%2 == 0]
     lstyle_string = [all2[i] for i in xrange(len(all2)) if i%2 != 0]
 
+    print lstyle_string
+
     assert(len(style_string) == len(lstyle_string))
 
 
@@ -86,10 +88,11 @@ def plotter(labels=labels, tfidf_matrix=tfidf_matrix):
     #     print a
     # static_list()
 
-    static_color_list = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#000000', '#9a6324', '#fffac8', '#800000', '#808000', '#ffd8b1', '#000075', '#808080','#DF87A6', '#A63C72', '#7D3997', '#91C1E5', '#196BE0', '#6C1F99', '#A4A6B9', '#6DBC1F', '#E2CF4A', '#0D356D', '#DC6D0D', '#BCACE2', '#6A128D', '#B93AB9', '#9C16AF', '#6E7A1C', '#EF508F', '#A34DA5', '#34A6B7', '#292349', '#9074D1', '#3D435E', '#D3E734', '#3FFF48', '#CD5A09', '#A88348', '#27F05C', '#D20076', '#E4B25C', '#871483']
+    static_color_list = ['#e6194b', '#3cb44b',  '#4063d8', '#f58231', '#911eb4', '#f032e6', '#bcf60c', '#9a6324', '#000000', '#fabebe',  '#cffac8', '#800000', '#8f8000', '#ffd8b1', '#000075', '#DF87A6', '#A63C72', '#7D3997', '#91C1E5', '#196BE0', '#6C1F99', '#A4A6B9', '#6DBC1F', '#E2CF4A', '#0D356D', '#DC6D0D', '#BCACE2', '#6A128D', '#B93AB9', '#9C16AF', '#6E7A1C', '#EF508F', '#A34DA5', '#34A6B7', '#292349', '#9074D1', '#3D435E', '#D3E734', '#3FFF48', '#CD5A09', '#A88348', '#27F05C', '#D20076', '#E4B25C', '#871483']
 
     unique_color_list = {}
-    unique_labels = list(set(labels))
+
+    unique_labels = sorted(list(set(labels + ['astronomy'])))
 
     for i, plot_cluster in enumerate(unique_labels):
         unique_color_list[plot_cluster] = static_color_list[i] #'#%02X%02X%02X' % (get_color(), get_color(), get_color())
