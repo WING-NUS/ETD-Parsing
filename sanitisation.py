@@ -29,7 +29,6 @@ def sanitise_file(file_path: str, output_filename: str = 'output.sanitised.txt')
                     file_buffer.seek(0)
 
                     with tqdm(total=total_lines) as pbar:
-                        counter = 0
                         line = file_buffer.readline()
 
                         pbar.set_description(f"Sanitising: {csl_type}/{style}")
@@ -47,6 +46,9 @@ def main():
     # Change the path to where the BibTeX files are
     cwd = os.getcwd()
     files = glob.glob(os.path.join(cwd, 'data/annotated/*/*/output.no_invalid_rows.txt'))
+
+    if not files:
+        raise FileNotFoundError()
 
     with Pool(MAX_CPU) as pool:
         pool.map(sanitise_file, files)

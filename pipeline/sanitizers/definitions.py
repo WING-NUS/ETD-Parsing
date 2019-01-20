@@ -32,6 +32,7 @@ DEFINITIONS = {
         'annual-reviews': [
             partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
             partial(SPACE_PRECEDE_CLOSING_TAG.sub, r"</\g<variable>> "),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4")
         ],
         'cambridge-university-press-author-date': [
             partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
@@ -77,6 +78,26 @@ DEFINITIONS = {
         'elsevier-vancouver': [
             partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
             partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+        ],
+        'springerprotocols': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(SPACE_PRECEDE_CLOSING_TAG.sub, r"</\g<variable>> "),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+        ],
+        'springer-mathphys-brackets': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(SPACE_PRECEDE_CLOSING_TAG.sub, r"</\g<variable>> "),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+        ],
+        'springer-humanities-author-date': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(SPACE_FOLLOW_OPENING_TAG.sub, r"<\g<variable>>"),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+        ],
+        'current-opinion': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(SPACE_PRECEDE_CLOSING_TAG.sub, r"</\g<variable>> "),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
         ]
     },
     'thesis': {
@@ -115,10 +136,10 @@ DEFINITIONS = {
         ],
         'african-online-scientific-information-systems-harvard': [
             partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+        ],
+        'nature': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(LEFT_PARENTHESE.sub, r"<\g<variable>>\g<leading>\g<content></\g<variable>>"),
         ]
     }
 }
-
-# for t, styles in DEFINITIONS.items():
-#     for s, rules in styles.items():
-#         print(t, s)
