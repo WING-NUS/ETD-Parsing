@@ -6,10 +6,7 @@ from collections import defaultdict
 
 from typing import List, Tuple
 
-HAS_TAG = re.compile(r"</?(?P<label>[\D][^>]+)>")
-HAS_OPENING_TAG = re.compile(r"^<(?P<label>[^/>][\D]*)>(?P<token>.*)$")
-HAS_CLOSING_TAG = re.compile(r"^(?P<token>.*)</{1}(?P<label>[\D][^/>]*)>$")
-HAS_BOTH = re.compile(r"<(?P<label>[\D][^/>]*)>(?P<token>.*)</\1>")
+from pipeline.sanitizers.regex import HAS_TAG, HAS_BOTH, HAS_CLOSING_TAG, HAS_OPENING_TAG
 
 def annotate(raw_tokens) -> List[Tuple]:
     tokens = []
@@ -65,7 +62,6 @@ def tokenise_idx(path_to_idx_files: str, path_to_sanitised_data: str):
     """
     idx_files = glob(os.path.abspath(path_to_idx_files))
     print(f"Reading indices from {path_to_idx_files}")
-
     print(f"Reading data from {path_to_sanitised_data}")
 
     folds = defaultdict(list)
@@ -77,9 +73,9 @@ def tokenise_idx(path_to_idx_files: str, path_to_sanitised_data: str):
             for idx in style_idx:
                 fold_idx = file.split('/')[file.split('/').index('folds') + 1]
 
-                style, lineno = idx.split('/')
+                csl_type, style, lineno = idx.split('/')
 
-                filepath = os.path.join(path_to_sanitised_data, style, 'output.sanitised.txt')
+                filepath = os.path.join(path_to_sanitised_data, csl_type, style, 'output.sanitised.txt')
 
                 line = linecache.getline(filepath, int(lineno))
 
@@ -89,21 +85,29 @@ def tokenise_idx(path_to_idx_files: str, path_to_sanitised_data: str):
 
     return folds
 
-training_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/train_style_idx.txt'),
-                             os.path.abspath('/Users/yuanchuan/Downloads/data/ETD/annotated/journals'))
+def main():
+    current_directory = os.getcwd()
 
-val_data = tokenise_idx(os.path.join(os.getcwd(), 'folds/*/val_style_idx.txt'),
-                        os.path.abspath('/Users/yuanchuan/Downloads/data/ETD/annotated/journals'))
+    annotated_path = os.path.join(current_directory, 'data/annotated')
 
-def write_tokens_as_lines(data: list, file: str):
-    with open(file, 'w') as fh:
-        for t in data:
-            for token, label in t:
-                fh.write(f"{token}\t{label}\n")
-            fh.write('\n')
+    training_data = tokenise_idx(os.path.join(current_directory, 'data/training/folds/*/train_style_idx.txt'),
+                                 annotated_path)
 
-for fold_idx, data in training_data.items():
-    write_tokens_as_lines(data, os.path.join(os.getcwd(), f"folds/{fold_idx}/train.txt"))
+    val_data = tokenise_idx(os.path.join(current_directory, 'data/training/folds/*/val_style_idx.txt'),
+                            annotated_path)
 
-for fold_idx, data in val_data.items():
-    write_tokens_as_lines(data, os.path.join(os.getcwd(), f"folds/{fold_idx}/val.txt"))
+    def write_tokens_as_lines(data: list, file: str):
+        with open(file, 'w') as fh:
+            for t in data:
+                for token, label in t:
+                    fh.write(f"{token}\t{label}\n")
+                fh.write('\n')
+
+    for fold_idx, data in training_data.items():
+        write_tokens_as_lines(data, os.path.join(current_directory, f"data/training/folds/{fold_idx}/train.txt"))
+
+    for fold_idx, data in val_data.items():
+        write_tokens_as_lines(data, os.path.join(current_directory, f"data/training/folds/{fold_idx}/val.txt"))
+
+if __name__ == '__main__':
+    main()

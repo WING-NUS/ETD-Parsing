@@ -1,0 +1,3 @@
+<author>Amsterdam, D., Phillips, S.B., and Richter, M.W.,</author> <year>1976.</year> <title>MORLUC numeric system for the identification of Enterobacteriaceae.</title> <container-title>J Clin Microbiol,</container-title> <volume>4</volume> <issue>(2),</issue> <page>160–164.</page>
+<author>Baccino, F.M. and Zuretti, M.F.,</author> <year>1975.</year> <title>Structural equivalents of latency for lysosome hydrolases.</title> <container-title>Biochem J,</container-title> <volume>146</volume> <issue>(1),</issue> <page>97–108.</page>
+<author>Brown, D.F.,</author> <year>1975.</year> <title>Letter: Penicillin-‘sensitive’ methicillin-resistant staphylococcus aureus.</title> <container-title>Br Med J,</container-title> <volume>4</volume> <issue>(5992),</issue> <page>344.</page>
