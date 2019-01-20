@@ -27,7 +27,7 @@ def count_lines(file: str):
 
     return line_count
 
-def generate_folds(path: str, num_folds: int, frac: float, folds_location: str = 'folds'):
+def generate_folds(path: str, num_folds: int, folds_location: str = 'folds'):
     """
     path (str): path to files with sanitised strings (globbable)
     num_folds (int): number of folds to create
@@ -85,8 +85,7 @@ def main():
     annotated_path = os.path.join(current_directory, 'data', 'annotated')
 
     generate_folds(os.path.join(annotated_path, "*/*/output.sanitised.txt"),
-                   10, 0.001,
-                   folds_location=os.path.join('data', 'training', 'folds'))
+                   10, folds_location=os.path.join('data', 'training', 'folds'))
 
 if __name__ == '__main__':
     main()
