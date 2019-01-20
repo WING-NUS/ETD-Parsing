@@ -1,0 +1,2 @@
+<citation-number>7.</citation-number> <author>Meyers BR, Leng B, and Hirschman SZ</author> <year>(1975)</year> <title>Cefamandole: Antimicrobial Activity In Vitro of a New Cephalosporin.</title> <volume>8:</volume> <page>737–741</page>
+<citation-number>8.</citation-number> <author>Iannini PB, Ehret J, and Eickhoff TC</author> <year>(1976)</year> <title>Effects of Ampicillin-Amikacin and Ampicillin-Rifampin on Enterococci.</title> <volume>9:</volume> <page>448–451</page>
