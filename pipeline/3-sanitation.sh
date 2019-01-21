@@ -18,5 +18,3 @@ cut -d$'\t' -f 2 data/training/folds/*/train.txt | sort | uniq
 cut -d$'\t' -f 2 data/training/folds/*/val.txt | sort | uniq
 # 8. Create compressed archive for training and validation data
 tar cvfz etd_22_styles_0_001_frac.tar.gz folds/*/{val,train}.txt
-
-grep '^<.*>\W\?$' output.txt | tr -s " " | sed 's/\\t/\/t/g' | sed -E 's/(\S*<\/[^<]+>)(<[^<]+>\S*)/\1 \2/g' > output.presanitised.txt
