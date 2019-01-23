@@ -98,6 +98,12 @@ DEFINITIONS = {
             partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
             partial(SPACE_PRECEDE_CLOSING_TAG.sub, r"</\g<variable>> "),
             partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+        ],
+        'modern-language-association-7th-edition-with-url': [
+            partial(CAPTURE_TEXT_BETWEEN_TAG_WITH_TRAILING_PUNCTUATION.sub, translocate_trailing_punct),
+            partial(LEFT_PARENTHESE.sub, r"<\g<variable>>\g<leading>\g<content></\g<variable>>"),
+            partial(CONNECTING_TAGS.sub, r"\1\2> <\3\4"),
+            partial(SPACE_FOLLOW_OPENING_TAG.sub, r"<\g<variable>>"),
         ]
     },
     'thesis': {
