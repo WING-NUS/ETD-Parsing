@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-GB">
+  <info>
+    <title>Nucleic Acids Research - Web Server Issue</title>
+    <id>http://www.zotero.org/styles/nucleic-acids-research-web-server-issue</id>
+    <link href="http://www.zotero.org/styles/nucleic-acids-research-web-server-issue" rel="self"/>
+    <link href="http://www.zotero.org/styles/nucleic-acids-research" rel="template"/>
+    <link href="http://www.oxfordjournals.org/nar/for_authors/msprep_submission.html" rel="documentation"/>
+    <link href="https://academic.oup.com/nar/pages/submission_webserver" rel="documentation"/>
+    <author>
+      <name>Sjoerd de Vries</name>
+      <email>sjdv1982@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>0305-1048</issn>
+    <eissn>1362-4962</eissn>
+    <summary>Nucleic Acids Research Web Server Issue style.</summary>
+    <updated>2017-02-19T11:21:49+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <name initialize-with="." name-as-sort-order="all" sort-separator="," delimiter=", " delimiter-precedes-last="always"/>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name name-as-sort-order="all" sort-separator="," initialize-with="." delimiter=", " and="text" delimiter-precedes-last="never"/>
+      <et-al font-style="italic"/>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;"/>
+        <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher" prefix="&lt;publisher&gt;" suffix="&lt;/publisher&gt;"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place&gt;" suffix="&lt;/publisher-place&gt;"/>
+    </group>
+  </macro>
+  <macro name="cite-date">
+    <date variable="issued">
+      <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix=".&lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter=", ">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" et-al-min="11" et-al-use-first="10">
+    <layout>
+      <group display="block" suffix=".">
+        <text variable="citation-number" suffix=". &lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+        <text macro="author"/>
+        <text macro="cite-date" prefix=" (" suffix=")"/>
+        <choose>
+          <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <group delimiter=" " prefix=" ">
+              <text macro="title"/>
+              <text macro="edition"/>
+              <text macro="editor"/>
+              <text macro="publisher"/>
+            </group>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <group prefix=" " delimiter=" " suffix=".">
+              <text macro="title" suffix="."/>
+              <text term="in" text-case="capitalize-first"/>
+              <group delimiter=", ">
+                <text macro="editor"/>
+                <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+                <text variable="collection-title" prefix="&lt;collection-title&gt; " suffix=".&lt;/collection-title&gt;"/>
+              </group>
+            </group>
+            <group suffix="." delimiter=", ">
+              <text macro="publisher" prefix=" "/>
+              <text variable="volume" prefix="&lt;volume&gt;Vol. " suffix="&lt;/volume&gt;"/>
+              <group>
+                <label variable="page" suffix=" " form="short"/>
+                <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+              </group>
+            </group>
+          </else-if>
+          <else>
+            <text macro="title" prefix=" " suffix="."/>
+            <group delimiter=", " prefix=" " suffix=".">
+              <text variable="container-title" form="short" font-style="italic" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+              <choose>
+                <if variable="volume">
+                  <text variable="volume" font-weight="bold" prefix="&lt;volume&gt;" suffix="&lt;/volume&gt;"/>
+                  <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+                </if>
+                <else>
+                  <text variable="DOI" prefix="&lt;DOI&gt;" suffix="&lt;/DOI&gt;"/>
+                </else>
+              </choose>
+            </group>
+          </else>
+        </choose>
+      </group>
+      <group display="block">
+        <text variable="DOI" prefix="&lt;DOI&gt;https://doi.org/" suffix="&lt;/DOI&gt;"/>
+      </group>
+      <group display="block">
+        <choose>
+          <if variable="PMCID">
+            <text variable="PMCID" prefix="&lt;PMCID&gt;http://www.ncbi.nlm.nih.gov/pmc/articles/" suffix="&lt;/PMCID&gt;"/>
+          </if>
+          <else>
+            <text variable="PMID" prefix="&lt;PMID&gt;http://www.ncbi.nlm.nih.gov/pubmed/" suffix="&lt;/PMID&gt;"/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

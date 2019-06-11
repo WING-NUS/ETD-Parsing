@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>National Science Foundation (grant proposals)</title>
+    <title-short>NSF</title-short>
+    <id>http://www.zotero.org/styles/national-science-foundation-grant-proposals</id>
+    <link href="http://www.zotero.org/styles/national-science-foundation-grant-proposals" rel="self"/>
+    <link href="http://www.nsf.gov/pubs/policydocs/pappguide/nsf11001/gpg_2.jsp#IIC2e" rel="documentation"/>
+    <author>
+      <name>kaushik panda</name>
+      <email>panda.10@osu.edu</email>
+    </author>
+    <contributor>
+      <name>David M. Kaplan</name>
+      <email>dmkaplan2000@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <updated>2015-04-09T14:33:59+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <text variable="citation-number" suffix=". &lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+      <names variable="author" suffix=". &lt;/author&gt;" prefix="&lt;author&gt;">
+        <name and="text" delimiter=", " name-as-sort-order="all" sort-separator=", " form="long" initialize-with=". "/>
+      </names>
+      <text variable="title" suffix=" &lt;/title&gt;" font-weight="bold" quotes="true" text-case="title" prefix="&lt;title&gt;"/>
+      <text variable="container-title" suffix=" &lt;/container-title&gt;" font-style="italic" prefix="&lt;container-title&gt;"/>
+      <text variable="volume" suffix=", &lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+      <text variable="issue" prefix="&lt;issue&gt;no. " suffix=" &lt;/issue&gt;"/>
+      <date variable="issued" prefix="(" suffix="): ">
+        <date-part name="year" form="long" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+      </date>
+      <text variable="page" suffix=". &lt;/page&gt;" prefix="&lt;page&gt;"/>
+      <group delimiter=", ">
+        <text variable="DOI" prefix="&lt;DOI&gt;doi:" suffix="&lt;/DOI&gt;"/>
+        <text variable="URL" prefix="&lt;URL&gt;Available at " suffix=" &lt;/URL&gt;"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

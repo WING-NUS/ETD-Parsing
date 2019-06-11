@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="11" et-al-use-first="10" initialize="false" page-range-format="expanded" demote-non-dropping-particle="never" default-locale="de-AT">
+  <info>
+    <title>Mohr Siebeck - Recht (German - Austria)</title>
+    <id>http://www.zotero.org/styles/mohr-siebeck-recht</id>
+    <link href="http://www.zotero.org/styles/mohr-siebeck-recht" rel="self"/>
+    <link href="http://www.mohr.de/fileadmin/user_upload/Hinweise_Autoren_PDF/Merkblaetter/merkjura2006.pdf" rel="documentation"/>
+    <author>
+      <name>Christopher Rüther</name>
+      <email>dcruether@web.de</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <summary>Kommentare sind als "report" zu kategorisieren, um richtig zitiert werden zu können. Gibt es keinen einheitlichen Autor oder Herausgeber bei Kommentaren, sondern nur einen Redakteur, ist dieser als Translator anzugeben, um im Literaturverzeichnis ordnungsgemäß zu erscheinen.</summary>
+    <updated>2015-07-06T20:30:41+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-article-journal">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-use-first="5" initialize="false"/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author-book">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-use-first="5" initialize="false"/>
+      <et-al/>
+    </names>
+    <text variable="title" form="short" prefix="&lt;title&gt;, " suffix=" &lt;/title&gt;"/>
+  </macro>
+  <macro name="author-chapter">
+    <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" font-style="italic" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="6" et-al-use-first="5" initialize="false"/>
+      <et-al font-style="italic"/>
+    </names>
+    <text value="in: " prefix=", "/>
+    <text variable="container-title" form="short" prefix="&lt;container-title&gt;" suffix="&lt;/container-title&gt;"/>
+  </macro>
+  <macro name="author-article-newspaper">
+    <names variable="author" font-style="normal" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name form="short" delimiter="/ " delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="20" et-al-use-first="19" initialize="false"/>
+    </names>
+  </macro>
+  <macro name="authority">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name delimiter=" " initialize="false"/>
+    </names>
+  </macro>
+  <citation>
+    <layout delimiter=", " suffix=".">
+      <group delimiter=", ">
+        <group>
+          <choose>
+            <if type="article-journal" match="all">
+              <text macro="author-article-journal"/>
+              <text variable="container-title" form="short" prefix="&lt;container-title&gt;, " suffix=" &lt;/container-title&gt;"/>
+              <choose>
+                <if match="all" variable="issued">
+                  <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt;" suffix="&lt;/issued&gt;"/>
+                </if>
+              </choose>
+            </if>
+            <else-if type="book" match="all">
+              <text macro="author-book"/>
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt;(" suffix=")&lt;/issued&gt;"/>
+              <choose>
+                <if match="all" variable="edition">
+                  <text variable="edition" vertical-align="sup" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+                </if>
+              </choose>
+            </else-if>
+            <else-if type="chapter" match="all">
+              <text macro="author-chapter"/>
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt; (" suffix=")&lt;/issued&gt;"/>
+              <choose>
+                <if match="any" variable="edition">
+                  <text variable="edition" form="short" vertical-align="sup" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+                </if>
+              </choose>
+            </else-if>
+            <else-if type="webpage" match="any">
+              <text variable="title" form="short" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+              <text variable="URL" prefix="&lt;URL&gt;&lt;" suffix="&gt;, &lt;/URL&gt;"/>
+              <date form="numeric" variable="accessed" prefix="&lt;accessed&gt;Stand " suffix="&lt;/accessed&gt;"/>
+            </else-if>
+            <else-if type="article-newspaper" match="any">
+              <text macro="author-article-newspaper" suffix=", "/>
+              <text variable="title" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+              <text variable="publisher" suffix=" &lt;/publisher&gt;" prefix="&lt;publisher&gt;"/>
+              <date form="numeric" variable="issued" prefix="&lt;issued&gt;vom " suffix=", &lt;/issued&gt;"/>
+              <choose>
+                <if match="any" variable="issue">
+                  <text variable="issue" prefix="&lt;issue&gt;Nr. " suffix="&lt;/issue&gt;"/>
+                </if>
+              </choose>
+            </else-if>
+            <else-if type="legal_case" match="all">
+              <text macro="authority"/>
+              <choose>
+                <if match="all" variable="container-title">
+                  <text variable="container-title" form="short" prefix="&lt;container-title&gt; " suffix="&lt;/container-title&gt;"/>
+                  <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt; " suffix=",&lt;/issued&gt;"/>
+                </if>
+                <else-if match="any" variable="title">
+                  <text value=", "/>
+                  <text variable="title" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+                </else-if>
+              </choose>
+            </else-if>
+            <else-if type="report" match="all">
+              <choose>
+                <if match="any" variable="author">
+                  <names variable="author" font-style="italic" delimiter="/" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+                    <name form="short" font-style="italic" delimiter="/ "/>
+                  </names>
+                  <text value=", in: "/>
+                </if>
+              </choose>
+              <text variable="title" form="short" prefix="&lt;title&gt;" suffix="&lt;/title&gt;"/>
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt; (" suffix=")&lt;/issued&gt;"/>
+              <choose>
+                <if match="all" variable="edition">
+                  <text variable="edition" form="short" vertical-align="sup" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+                </if>
+              </choose>
+            </else-if>
+            <else>
+              <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+                <name font-style="italic" delimiter="/"/>
+              </names>
+              <text variable="title" prefix="&lt;title&gt;, " suffix=" &lt;/title&gt;"/>
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued&gt;(" suffix=")&lt;/issued&gt;"/>
+              <choose>
+                <if match="any" variable="edition">
+                  <text variable="edition" form="short" vertical-align="sup" prefix="&lt;edition&gt;" suffix="&lt;/edition&gt;"/>
+                </if>
+              </choose>
+            </else>
+          </choose>
+        </group>
+        <group delimiter=" ">
+          <label variable="locator" form="symbol"/>
+          <text variable="locator" prefix="&lt;locator&gt;" suffix="&lt;/locator&gt;"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key variable="author" names-use-first="1"/>
+    </sort>
+    <layout>
+      <choose>
+        <if type="article-journal" match="any">
+          <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+            <name font-style="italic" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="7" et-al-use-first="6" initialize="false" name-as-sort-order="all"/>
+          </names>
+          <text variable="title" prefix="&lt;title&gt;: " suffix=", &lt;/title&gt;"/>
+          <text variable="collection-title" suffix=", &lt;/collection-title&gt;" prefix="&lt;collection-title&gt;"/>
+          <text variable="container-title" suffix=" &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+          <date date-parts="year" form="text" variable="issued" suffix=", &lt;/issued&gt;" prefix="&lt;issued&gt;"/>
+          <text variable="page" suffix=".&lt;/page&gt;" prefix="&lt;page&gt;"/>
+        </if>
+        <else-if type="book" match="all">
+          <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+            <name font-style="italic" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="7" et-al-use-first="6" initialize="false" name-as-sort-order="all"/>
+          </names>
+          <text variable="title" prefix="&lt;title&gt;: " suffix=", &lt;/title&gt;"/>
+          <choose>
+            <if match="any" variable="collection-title">
+              <text variable="collection-title" prefix="&lt;collection-title&gt;. " suffix=", &lt;/collection-title&gt;"/>
+            </if>
+          </choose>
+          <choose>
+            <if match="any" variable="edition">
+              <text variable="edition" suffix=". &lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+              <text term="edition" form="short" suffix=" "/>
+            </if>
+          </choose>
+          <text variable="publisher-place" suffix=" &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <date date-parts="year" form="text" variable="issued" suffix=".&lt;/issued&gt;" prefix="&lt;issued&gt;"/>
+        </else-if>
+        <else-if type="chapter" match="any">
+          <names variable="author" font-style="italic" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+            <name font-style="italic" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="7" et-al-use-first="6" initialize="false" name-as-sort-order="all"/>
+          </names>
+          <text variable="title" prefix="&lt;title&gt;: " suffix=", &lt;/title&gt;"/>
+          <choose>
+            <if match="all" variable="editor">
+              <names variable="editor" font-variant="normal" delimiter="/" prefix="&lt;editor&gt;in: " suffix=" (Hrsg.): &lt;/editor&gt;">
+                <name form="short" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="7" et-al-use-first="6" name-as-sort-order="all"/>
+              </names>
+              <text variable="container-title" suffix=", &lt;/container-title&gt;" prefix="&lt;container-title&gt;"/>
+            </if>
+          </choose>
+          <choose>
+            <if match="any" variable="edition">
+              <text variable="edition" suffix=". &lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+              <text term="edition" form="short" suffix=" "/>
+            </if>
+          </choose>
+          <text variable="publisher-place" suffix=" &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <date date-parts="year" form="text" variable="issued" suffix=", &lt;/issued&gt;" prefix="&lt;issued&gt;"/>
+          <text variable="page" suffix=".&lt;/page&gt;" prefix="&lt;page&gt;"/>
+        </else-if>
+        <else-if type="report" match="all">
+          <choose>
+            <if match="all" variable="editor">
+              <names variable="editor" font-style="italic" delimiter="/" prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+                <name font-style="italic" delimiter="/" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="7" et-al-use-first="6" initialize="false" name-as-sort-order="all"/>
+              </names>
+              <text value="(Hrsg.): "/>
+            </if>
+            <else-if match="any" variable="author">
+              <names variable="author" font-style="italic" delimiter="/" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+                <name font-style="italic" delimiter="/"/>
+              </names>
+              <text value=": "/>
+            </else-if>
+            <else-if match="all" variable="translator">
+              <names variable="translator" font-style="italic" prefix="&lt;translator&gt;" suffix="&lt;/translator&gt;">
+                <name font-style="italic" delimiter="/" name-as-sort-order="all"/>
+              </names>
+              <text value="(Redakteur):" prefix=" "/>
+            </else-if>
+          </choose>
+          <text variable="title" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+          <text variable="volume" suffix=", &lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+          <text variable="edition" suffix=". &lt;/edition&gt;" prefix="&lt;edition&gt;"/>
+          <text term="edition" form="short" suffix=" "/>
+          <text variable="publisher-place" suffix=" &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+          <date date-parts="year" form="text" variable="issued" suffix=".&lt;/issued&gt;" prefix="&lt;issued&gt;"/>
+        </else-if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

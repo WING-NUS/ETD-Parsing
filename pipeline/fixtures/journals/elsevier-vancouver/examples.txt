@@ -1,0 +1,2 @@
+<citation-number>[50]</citation-number><author>Anderson SJ, Chou HS, Loh DY</author>. <title>A conserved sequence in the T-cell receptor beta-chain promoter region.</title>. <container-title>Proc Natl Acad Sci U S A</container-title> <year>1988</year>;<volume>85</volume>:<page>3551–4</page>.
+<citation-number>[51]</citation-number><author>Coleman RM</author>. <title>Risk reduction and drug abusers.</title>. <container-title>J R Coll Gen Pract</container-title> <year>1988</year>;<volume>38</volume>:<page>518</page>.

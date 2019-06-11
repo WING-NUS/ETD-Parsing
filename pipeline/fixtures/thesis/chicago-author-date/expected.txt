@@ -1,0 +1,2 @@
+<author>Baird, Hugh Robert.</author> <year>1960.</year> <title>“Analysis of Variance of a Balanced Incomplete Block Design with Missing Observations.”</title> <publisher>Virginia Polytechnic Institute.</publisher> <URL>http://hdl.handle.net/10919/74086.</URL>
+<author>Bales, Eugene Dean.</author> <year>1947.</year> <title>“The Effect of Freezing on Hydraulic-Cement Mortar Different Hours after Mixing.”</title> <publisher>Virginia Polytechnic Institute.</publisher> <URL>http://hdl.handle.net/10919/53462.</URL>

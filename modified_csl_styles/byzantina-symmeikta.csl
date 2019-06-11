@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  
+  <info>
+    <title>BYZANTINA SYMMEIKTA</title>
+    <id>http://www.zotero.org/styles/byzantina-symmeikta</id>
+    <link href="http://www.zotero.org/styles/byzantina-symmeikta" rel="self"/>
+    <link href="http://www.byzsym.org/index.php/bz/about/submissions#authorGuidelines" rel="documentation"/>
+    <author>
+      <name>National Documentation Centre</name>
+      <uri>http://www.ekt.gr/</uri>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="history"/>
+    <issn>1791-4884</issn>
+    <updated>2008-10-05T10:04:29-07:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author&gt;" suffix="&lt;/author&gt;">
+      <name delimiter=" - " initialize-with=". "/>
+      <label form="long" text-case="uppercase" prefix=" - " suffix=" "/>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " prefix="&lt;editor&gt;" suffix="&lt;/editor&gt;">
+      <label form="verb-short" text-case="lowercase" suffix=" " strip-periods="true"/>
+      <name delimiter=" - " initialize-with=". "/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if type="article-journal report" match="any">
+        <date variable="issued" prefix="(" suffix=") ">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </if>
+      <else>
+        <date suffix=", " variable="issued">
+          <date-part name="year" prefix="&lt;year&gt;" suffix="&lt;/year&gt;"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if variable="editor">
+        <choose>
+          <if variable="volume">
+            <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;in " suffix=" &lt;/container-title&gt;" form="short"/>
+          </if>
+          <else>
+            <text variable="container-title" font-style="italic" prefix="&lt;container-title&gt;in " suffix=", &lt;/container-title&gt;" form="short"/>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <text variable="container-title" font-style="italic" suffix=" &lt;/container-title&gt;" form="short" prefix="&lt;container-title&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="volume">
+    <choose>
+      <if variable="editor">
+        <text variable="volume" suffix=", &lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+      </if>
+      <else>
+        <text variable="volume" suffix=" &lt;/volume&gt;" prefix="&lt;volume&gt;"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout vertical-align="sup" delimiter=",">
+      <text variable="citation-number" prefix="&lt;citation-number&gt;" suffix="&lt;/citation-number&gt;"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0">
+    <layout suffix=".">
+      <text variable="citation-number" suffix=".&lt;/citation-number&gt;" prefix="&lt;citation-number&gt;"/>
+      <text macro="author" prefix=" " suffix=", " text-case="uppercase"/>
+      <text variable="title" suffix=", &lt;/title&gt;" prefix="&lt;title&gt;"/>
+      <text macro="container-title"/>
+      <text macro="volume"/>
+      <choose>
+        <if variable="collection-title">
+          <text macro="editor" prefix=" " suffix=" " text-case="uppercase"/>
+        </if>
+        <else>
+          <text macro="editor" prefix=" " suffix=" " text-case="uppercase"/>
+        </else>
+      </choose>
+      <text variable="collection-title" prefix="&lt;collection-title&gt;[" suffix="], &lt;/collection-title&gt;"/>
+      <text variable="publisher-place" suffix=" &lt;/publisher-place&gt;" prefix="&lt;publisher-place&gt;"/>
+      <text macro="issued"/>
+      <text variable="page" prefix="&lt;page&gt;" suffix="&lt;/page&gt;"/>
+    </layout>
+  </bibliography>
+</style>

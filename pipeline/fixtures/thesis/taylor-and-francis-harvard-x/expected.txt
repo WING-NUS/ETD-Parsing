@@ -1,0 +1,2 @@
+<author>Baralt, J.I.,</author> <year>2017.</year> <title>Housing La Habana Vieja: Reframing the Formal and Informal Vernacular.</title> <publisher>Virginia Tech.</publisher>
+<author>Barnett, S.,</author> <year>2005.</year> <title>Development of a Tow Capacity Test Device for Small Unmanned Vehicles.</title> <publisher>Virginia Tech.</publisher>

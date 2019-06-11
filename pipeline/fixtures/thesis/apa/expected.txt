@@ -1,0 +1,2 @@
+<author>Andersen, K. L.</author> <year>(2000).</year> <title>Student Leadership Development: A Closer Look at Student Gains.</title> <publisher>Virginia Tech.</publisher> Retrieved from <URL>http://hdl.handle.net/10919/31990</URL>
+<author>Anderson, G. L.</author> <year>(1992).</year> <title>The development of poly(vinylidene fluoride) piezoelectric sensors for measuring peel stresses in adhesive joints.</title> <publisher>Virginia Tech.</publisher> Retrieved from <URL>http://hdl.handle.net/10919/39881</URL>
