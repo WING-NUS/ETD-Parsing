@@ -15,7 +15,7 @@
 # 2019-06: Jian Wu
 #          * add more comments
 #          * separate journals and conferences output to different directories
-# 
+#          * exclude papers with no author information 
 #paperE author, title, journal, year, volume, number, pages, doi
 #inproceedings: author, title, booktitle, year, editor, volume, number, pages, address, publisher
 #author: The name(s) of the author(s) (in the case of more than one author, separated by and)
@@ -51,6 +51,9 @@ def dbrec_to_bibtex(dbrec):
         last_name = last_name.strip()
         suffix = suffix.strip()
 
+        # if author name is empty, skip this author
+        if last_name == '': continue
+
         # last_name, suffix, first_name middle_name, e.g., Ororbia,II, Alexander G.
         auth += "{" + last_name + "}, {" + first_name + "} "
         if middle_name != "":
@@ -58,6 +61,10 @@ def dbrec_to_bibtex(dbrec):
         if suffix != "":
             auth += ", {" + suffix + "} "
         auth += "and "
+
+    # if all authors are empty, skip this paper
+    if auth == "": return [("author_missing",1)]
+
     author = auth[:len(auth) - 5]
 
     # generate bibtex string based on record type
@@ -170,7 +177,7 @@ if __name__ == '__main__':
 
     cnx = mysql.connector.connect(**acmdldb)
     cursor = cnx.cursor(buffered = True)
-    cursor.execute("SELECT iid, article_id, title, year, issn, number, volume, venue_name, page_from, page_to, editors, publisher_name, publisher_address, doi_number, venue_type FROM PAPER LIMIT 1000") 
+    cursor.execute("SELECT iid, article_id, title, year, issn, number, volume, venue_name, page_from, page_to, editors, publisher_name, publisher_address, doi_number, venue_type FROM PAPER WHERE article_id<=999000") 
 
     dbrecs = cursor.fetchall()
     cursor.close()
