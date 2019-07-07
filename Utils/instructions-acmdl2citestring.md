@@ -1,7 +1,7 @@
 ###### Version history:
 * 2019-07-07: created by Jian Wu (fanchyna@gmail.com)
 
-### INSTRUCTIONS TO GENERATE ANNOTATED CITATION STRINGS FROM ACM DL DATABASE RECORDS
+### GENERATE ANNOTATED CITATION STRINGS FROM ACM DL DATABASE RECORDS
 
 
 This document contains instructions to generate automatically annotated citation strings from the ACM digital library (ACM DL) database records. This assumes the following datasets and programming environment are in place:
@@ -29,7 +29,7 @@ The output directory contains two subdirectories: `conference/` and `journal/`. 
 
 Empirically, this step can take several hours within a day.
 
-#### The second step is to generate automatically annotated citation strings. 
+#### 2. The second step is to generate automatically annotated citation strings. 
 Before doing this, we need to prepare for files required by `ref2bib-assembly-loop.sh`, which will parallelize the core program `ref2bib-assembly-0.1.1.jar`. First, we generate a text file containing a list of paths to the subfolders, e.g., `2008/`. This can be done using the following shell command (assuming the `workdir` is  `/data/workdir`):
 ```bash
 $ find /data/workdir/conference -maxdepth 1 -type d > /data/workdir/list-files/conference.txt
@@ -105,4 +105,4 @@ ref2bib-assembly-loop-conf/modern-language-association-7th-edition
 ```
 Each directory contains about 2000 files named like `output_2008.txt`. The number `2008` corresponds to the subfolder above. The total number of rows in this file should be equal to the number of BibTex files under `/data/workdir/conference/2008`.
 
-This step is very computationally expensive. Empirically, it took up to 6 days on a server with 96 cores (100% used). The requirement to the memory is not very high, but a server with such high CPUs usually has high memory as well. 
+_Step 2 is very computationally expensive._ Empirically, it took up to 6 days on a server with 96 cores (100% used). The requirement to the memory is not very high, but a server with such high CPUs usually has high memory as well. 
