@@ -13,7 +13,8 @@ This document contains instructions to generate automatically annotated citation
 * JDK 1.8+
 * Scala 2.12.8+: this needs to be installed at `/usr/share/scala/lib/scala-library.jar` or a particular directory that will be specified for the `SCALA_HOME` variable later.
 
-1. The first step is to generate BibTex (.bib) files. Before doing this, edit the configuration file `config.py` to set the database name and login credentials. The `workdir` specifies the main working directory under which the output and log directories will be created. Then run
+#### 1. The first step is to generate BibTex (.bib) files. 
+Before doing this, edit the configuration file `config.py` to set the database name and login credentials. The `workdir` specifies the main working directory under which the output and log directories will be created. Then run
 ```bash
 $ python3 db2bibtex.py -h
 ```
@@ -28,7 +29,8 @@ The output directory contains two subdirectories: `conference/` and `journal/`. 
 
 Empirically, this step can take several hours within a day.
 
-2. The second step is to generate automatically annotated citation strings. Before doing this, we need to prepare for files required by `ref2bib-assembly-loop.sh`, which will parallelize the core program `ref2bib-assembly-0.1.1.jar`. First, we generate a text file containing a list of paths to the subfolders, e.g., `2008/`. This can be done using the following shell command (assuming the `workdir` is  `/data/workdir`):
+#### The second step is to generate automatically annotated citation strings. 
+Before doing this, we need to prepare for files required by `ref2bib-assembly-loop.sh`, which will parallelize the core program `ref2bib-assembly-0.1.1.jar`. First, we generate a text file containing a list of paths to the subfolders, e.g., `2008/`. This can be done using the following shell command (assuming the `workdir` is  `/data/workdir`):
 ```bash
 $ find /data/workdir/conference -maxdepth 1 -type d > /data/workdir/list-files/conference.txt
 $ find /data/workdir/journal -maxdepth 1 -type d > /data/workdir/list-files/journal.txt
